@@ -84,3 +84,8 @@ production:
   database: maaser_app_production
   username: maaser_app
   password: <%= ENV["MAASER_APP_DATABASE_PASSWORD"] %>
+
+
+# production:
+  # <<: *default
+  # url: <%= ENV['DATABASE_URL'] %>
