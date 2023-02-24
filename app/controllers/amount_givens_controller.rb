@@ -1,0 +1,2 @@
+class AmountGivensController < ApplicationController
+end

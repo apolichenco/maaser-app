@@ -1,0 +1,2 @@
+class AmountGiven < ApplicationRecord
+end
