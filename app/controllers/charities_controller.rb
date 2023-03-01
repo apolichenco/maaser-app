@@ -1,2 +1,0 @@
-class CharitiesController < ApplicationController
-end

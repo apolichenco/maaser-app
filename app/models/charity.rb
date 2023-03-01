@@ -1,2 +1,0 @@
-class Charity < ApplicationRecord
-end

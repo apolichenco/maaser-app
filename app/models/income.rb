@@ -1,2 +1,0 @@
-class Income < ApplicationRecord
-end
