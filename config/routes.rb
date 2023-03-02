@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  resources :user_tests
+  resources :donations
   resources :subscriptions
-  resources :amount_givens
   resources :charities
   resources :incomes
   resources :users

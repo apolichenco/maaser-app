@@ -8,4 +8,3 @@
 
 
 first_user = User.create([{ name: "Abe Poli", password: "reach4Sky", percentage: 10 }])
-first_user_test = UserTest.create([{ name: "Abe Poli", password: "reach4Sky" }])
