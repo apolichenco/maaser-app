@@ -79,13 +79,13 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+# production:
+#   <<: *default
+#   database: maaser_app_production
+#   username: maaser_app
+#   password: <%= ENV["MAASER_APP_DATABASE_PASSWORD"] %>
+
+
 production:
   <<: *default
-  database: maaser_app_production
-  username: maaser_app
-  password: <%= ENV["MAASER_APP_DATABASE_PASSWORD"] %>
-
-
-# production:
-  # <<: *default
-  # url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>

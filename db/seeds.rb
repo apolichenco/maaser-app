@@ -7,4 +7,4 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
-first_user = User.create([{ name: "Abe Poli", password: "reach4Sky", percentage: 10 }])
+# first_user = User.create([{ name: "Abe Poli", password: "reach4Sky", percentage: 10 }])
