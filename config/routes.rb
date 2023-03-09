@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :subscriptions, only: [:create, :update, :delete, :index]
   resources :charities, only: [:create, :update, :delete, :index]
   resources :incomes, only: [:create, :update, :delete, :index]
-  resources :users
+  resources :users, only: [:index]
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
   post "/login", to: "sessions#create"
