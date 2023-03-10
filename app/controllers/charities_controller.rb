@@ -2,18 +2,11 @@ class CharitiesController < ApplicationController
 
     before_action :authorize
 
+    rescue_from  ActiveRecord::RecordInvalid, with: :render_unproccesable_entity_response
 
     def create
-        charity = Charity.create(charity_params)
-        if 
-    end
-
-    def update
-
-    end
-
-    def destroy
-
+        charity = Charity.create!(charity_params)
+        render json: charity, status: :created
     end
 
     def index
@@ -28,7 +21,11 @@ class CharitiesController < ApplicationController
     end
 
     def authorize
-        return render json: {errors: ["Not logged in"]}, status: :unauthorized unless session.include? :user_id
+        return render json: {errors: ["You are not logged in."]}, status: :unauthorized unless session.include? :user_id
+    end
+
+    def render_unproccesable_entity_response(invalid)
+        render json: {errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
     end
 
 end
