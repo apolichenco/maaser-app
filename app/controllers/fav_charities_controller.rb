@@ -1,37 +1,26 @@
 class FavCharitiesController < ApplicationController
 
-        # def update
-    #     charity = Charity.find(params[:id])
-    #     charity.update!(charity_params)
-    #     render json: charity, status: :created
-    # end
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
-    # def destroy
-    #     if session[:user_id]
-    #         session.delete :user_id
-    #         head :no_content
-    #     else
-    #         render json: {errors: ["Not authorized"]}, status: :unauthorized
-    #     end
-    # end
+    def destroy
+        fav_charity = FavCharity.find(params[:id])
+        if fav_charity.user.id == current_user_id
+            fav_charity.destroy
+            head :no_content
+        else
+            render json: {errors: ["Not your subscription"]}, status: :unauthorized
+        end
+    end
 
     def index
-        charities = FavCharity.all
+        fav_charities = FavCharity.all
         render json: charities, status: :created
     end
 
-    # private
+    private
 
-    # def charity_params
-    #     params.permit(:name, :link, :favorite)
-    # end
-
-    # def authorize
-    #     return render json: {errors: ["You are not logged in."]}, status: :unauthorized unless session.include? :user_id
-    # end
-
-    # def render_unproccesable_entity_response(invalid)
-    #     render json: {errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
-    # end
+    def render_not_found_response
+        render json: {errors: ["Charity Was Not Found"]}, status: :not_found
+    end
 
 end
