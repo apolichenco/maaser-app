@@ -12,18 +12,20 @@ class SubscriptionsController < ApplicationController
 
     def update
         subscription = Subscription.find(params[:id])
+        is_it_mine
         subscription.update!(subscription_params)
         render json: subscription, status: :created
     end
 
     def destroy
         subscription = Subscription.find(params[:id])
-        if subscription.user.id == current_user_id
+        # if subscription.user.id == current_user_id
+        is_it_mine
             subscription.destroy
             head :no_content
-        else
-            render json: {errors: ["Not your subscription"]}, status: :unauthorized
-        end
+        # else
+        #     render json: {errors: ["Not your subscription"]}, status: :unauthorized
+        # end
     end
 
     private
@@ -34,6 +36,10 @@ class SubscriptionsController < ApplicationController
 
     def render_not_found_response
         render json: {errors: ["Subscription Not Found"]}, status: :not_found
+    end
+
+    def is_it_mine
+        return render json: {errors: ["Not your income"]}, status: :unauthorized unless subscription.user.id == current_user_id
     end
 
 end

@@ -12,8 +12,12 @@ class IncomesController < ApplicationController
 
     def update
         income = Income.find(params[:id])
-        income.update!(income_params)
-        render json: income, status: :created
+        if income.user.id == current_user_id
+            income.update!(income_params)
+            render json: income, status: :created
+        else
+            render json: {errors: ["Not your income"]}, status: :unauthorized
+        end
     end
 
     private

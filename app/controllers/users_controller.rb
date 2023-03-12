@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
 
+    before_action :authorize
+
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    rescue_from  ActiveRecord::RecordInvalid, with: :render_unproccesable_entity_response
 
     def index
         users = User.all
@@ -8,7 +11,7 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.create(params.permit(:name, :password_digest, :percentage))
+        user = User.create(user_params)
         if user.valid?
             session[:user_id] = user.id
             render json: user, status: :created
@@ -23,11 +26,21 @@ class UsersController < ApplicationController
         render json: user, statu: :created
     end
 
+    def update
+        user = User.find(params[:id])
+        if user.id == current_user_id
+            user.update!(user_params)
+            render json: user, status: :created
+        else
+            render json: {errors: ["Not your account"]}, status: :unauthorized
+        end
+    end
+
     private
 
-    # def user_params
-    #     params.permit(:name, :password_digest, :percentage)
-    # end
+    def user_params
+        params.permit(:name, :password_digest, :percentage)
+    end
 
     def render_not_found_response
         render json: {errors: ["Account Not Found"]}, status: :not_found

@@ -16,8 +16,4 @@ class CharitiesController < ApplicationController
 
     private
 
-    # def charity_params
-    #     params.permit(:name, :link, :favorite)
-    # end
-
 end

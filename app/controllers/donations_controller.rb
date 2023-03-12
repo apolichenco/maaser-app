@@ -13,8 +13,12 @@ class DonationsController < ApplicationController
 
     def update
         donation = Donation.find(params[:id])
-        donation.update!(donation_params)
-        render json: donation, status: :created
+        if donation.user.id == current_user_id
+            donation.update!(donation_params)
+            render json: donation, status: :created
+        else
+            render json: {errors: ["Not your donation"]}, status: :unauthorized
+        end
     end
 
     private
