@@ -8,7 +8,7 @@ class ApplicationController < ActionController::API
     end
     
     def authorize
-        return render json: {errors: ["You are not logged in."]}, status: :unauthorized unless session.include? :user_id
+        return render json: {errors: ["You are not logged in"]}, status: :unauthorized unless session.include? :user_id
     end
 
     def render_unproccesable_entity_response(invalid)

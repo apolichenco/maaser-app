@@ -7,19 +7,4 @@ class Donation < ApplicationRecord
     validates :charity_id, presence: true
     validates :user_id, presence: true
 
-    before_save :add_to_total_gave
-
-    @@total_gave = 0
-
-    def add_to_total_gave
-        @@total_gave += self.amount
-    end
-
-    def charity
-        self.charity
-
-    def self.total_gave
-        @@total_gave
-    end
-
 end
