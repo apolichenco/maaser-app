@@ -13,8 +13,8 @@ class SubscriptionsController < ApplicationController
     def update
         subscription = Subscription.find(params[:id])
         is_it_mine
-        subscription.update!(subscription_params)
-        render json: subscription, status: :created
+            subscription.update!(subscription_params)
+            render json: subscription, status: :created
     end
 
     def destroy
