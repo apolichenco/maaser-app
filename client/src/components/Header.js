@@ -6,16 +6,16 @@ function Header() {
 
     return (
         <div>
-            <NavLink to="./">
+            <NavLink to="./home">
                 Home
             </NavLink>
-            <NavLink to="./">
+            <NavLink to="./charities">
                 Charities
             </NavLink>            
-            <NavLink to="./">
+            <NavLink to="./forms">
                 New Give/Income
             </NavLink>
-            <NavLink to="./">
+            <NavLink to="./account">
                 Account
             </NavLink>
         </div>

@@ -14,7 +14,20 @@ function App() {
     return (
         <div>
             <Header></Header>
-
+            <Switch>
+                <Route path="/home">
+                    <HomePage></HomePage>
+                </Route>
+                <Route path="/charities">
+                    <Charities></Charities>
+                </Route>
+                <Route path="/forms">
+                    <Form></Form>
+                </Route>
+                <Route path="/account">
+                    <Account></Account>
+                </Route>
+            </Switch>
         </div>
     );
 
