@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "bcrypt": "^5.1.0",
-    "react-router-dom": "^5.2.0"
+    "bcrypt": "^5.1.0"
   }
 }
