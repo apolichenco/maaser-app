@@ -1,6 +1,6 @@
 class IncomesController < ApplicationController
 
-    before_action :authorize
+    # before_action :authorize
 
     rescue_from  ActiveRecord::RecordInvalid, with: :render_unproccesable_entity_response
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
@@ -18,6 +18,11 @@ class IncomesController < ApplicationController
         else
             render json: {errors: ["Not your income"]}, status: :unauthorized
         end
+    end
+
+    def index
+        incomes = Income.all
+        render json: incomes
     end
 
     private

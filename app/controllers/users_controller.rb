@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-    before_action :authorize
-
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from  ActiveRecord::RecordInvalid, with: :render_unproccesable_entity_response
 
@@ -27,6 +25,7 @@ class UsersController < ApplicationController
     end
 
     def update
+        authorize
         user = User.find(params[:id])
         if user.id == current_user_id
             user.update!(user_params)

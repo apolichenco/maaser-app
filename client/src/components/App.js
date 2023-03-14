@@ -10,22 +10,23 @@ import Charities from './Charities';
 
 function App() {
 
+    
 
     return (
         <div>
             <Header></Header>
             <Switch>
                 <Route path="/home">
-                    <HomePage></HomePage>
+                    <HomePage/>
                 </Route>
                 <Route path="/charities">
-                    <Charities></Charities>
+                    <Charities/>
                 </Route>
                 <Route path="/forms">
-                    <Form></Form>
+                    <Form/>
                 </Route>
                 <Route path="/account">
-                    <Account></Account>
+                    <Account/>
                 </Route>
             </Switch>
         </div>
