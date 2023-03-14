@@ -19,21 +19,22 @@ function Form() {
             maaser_exempt: newMaaserExempt,
             user_id: "user.id"
         }
-        fetch("/incomes", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json", 
-            },
-            body: JSON.stringify(newIncome),
-        })
-        .then((r) => {
-            if (r.ok) {
-                r.json().then((data) => console.log(data))
-            }
-            else {
-                r.json().then((err) => console.log(err))
-            }
-        })
+        console.log(newIncome)
+        // fetch("/incomes", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json", 
+        //     },
+        //     body: JSON.stringify(newIncome),
+        // })
+        // .then((r) => {
+        //     if (r.ok) {
+        //         r.json().then((data) => console.log(data))
+        //     }
+        //     else {
+        //         r.json().then((err) => console.log(err))
+        //     }
+        // })
     }
 
     function fetchForNewDonation(e) {
@@ -43,24 +44,25 @@ function Form() {
             user_id: "user.id",
             charity_id: donationCharityId
         }
-        fetch("/donations", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json", 
-            },
-            body: JSON.stringify(newDonation),
-        })
-        .then((r) => {
-            if (r.ok) {
-                r.json()
-                .then((data) => {
-                    console.log(data)
-                })
-            }
-            else {
-                r.json().then((err) => console.log(err.errors))
-            }
-        })
+        console.log(newDonation)
+        // fetch("/donations", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json", 
+        //     },
+        //     body: JSON.stringify(newDonation),
+        // })
+        // .then((r) => {
+        //     if (r.ok) {
+        //         r.json()
+        //         .then((data) => {
+        //             console.log(data)
+        //         })
+        //     }
+        //     else {
+        //         r.json().then((err) => console.log(err.errors))
+        //     }
+        // })
     }
 
 
@@ -68,28 +70,42 @@ function Form() {
         <div>
             <form onSubmit={fetchForNewIncome}>
                 <label>Enter your new earning to start calculating your maaser:</label>
+                <br></br>
                 <label>Amount:</label>
+                <br></br>
                 <input type="text" id="price" value={newIncomeAmount} onChange={(e) => setNewIncomeAmount(e.target.value)}></input>
+                <br></br>
                 <label>Notes:</label>
+                <br></br>
                 <input type="text" id="price" value={newNotes} onChange={(e) => setNewNotes(e.target.value)}></input>
+                <br></br>
                 <label>Repeat?</label>
-                <input type="text" id="price" value={newRepeat} onChange={(e) => setNewRepeat(e.target.value)}></input>
+                <br></br>
+                <input type="radio" id="price" name="repeat" value="true" onChange={(e) => setNewRepeat(e.target.value)}></input>
+                <label>True</label>
+                <input type="radio" id="price" name="repeat" value="false"onChange={(e) => setNewRepeat(e.target.value)}></input>
+                <label>False</label>
+                <br></br>
                 <label>Maaser Exempt?</label>
-                <input type="text" id="price" value={newMaaserExempt} onChange={(e) => setMaaserExempt(e.target.value)}></input>
+                <br></br>
+                <input type="radio" id="maaser_exempt" name="maaser_exempt" value="true" onChange={(e) => setMaaserExempt(e.target.value)}></input>
+                <label>True</label>
+                <input type="radio" id="maaser_exempt" name="maaser_exempt" value="false" onChange={(e) => setMaaserExempt(e.target.value)}></input>
+                <label>False</label>
+                <br></br>
                 <button type="submit">Submit</button>
             </form>
-    {/* <div>
-        <form onSubmit={addANewListing}>
-            <label>Choose an earing here:</label>
-            <select onChange={(e) => setNewListingEaringId(e.target.value)}>
-                {earings.map((earing) => <option key={earing.id} value={earing.id}>{earing.color} and {earing.shape}</option>)}
-            </select>
-            <h5>Can't find the earing you're looking for? Click <button onClick={goToNewEaring}>here</button> to create a new one!</h5>
-            <label>Price:</label>
-            <input type="text" id="price" value={newPrice} onChange={(e) => setNewPrice(e.target.value)}></input>
-            <button type="submit">Submit</button>
-        </form>
-    </div> */}
+            <br></br>
+            <br></br>
+            <form onSubmit={fetchForNewDonation}>
+                <label>Enter your new donation:</label>
+                <br></br>
+                <label>Amount:</label>
+                <br></br>
+                <input type="text" id="price" value={newDonationAmount} onChange={(e) => setNewDonationAmount(e.target.value)}></input>
+                <br></br>
+                <button type="submit">Submit</button>
+            </form>
         </div>
     );
 

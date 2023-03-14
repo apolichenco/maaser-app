@@ -1,4 +1,5 @@
 import React, {useContext, useState} from 'react';
+import { UserContext } from '../context/user';
 
 function Account() {
     const [name, setName] = useState("")
@@ -7,7 +8,7 @@ function Account() {
     const [errors, setErrors] = useState()
     const [typeOfLogIn, setTypeOfLogIn] = useState(false)
 
-    // const {setUser} = useContext(UserContext)
+    const {setUser} = useContext(UserContext)
 
     let allErrors = []
     if (errors) {
@@ -28,7 +29,7 @@ function Account() {
         .then((r) => {
             if (r.ok) {
                 r.json().then((newUser) => {
-                    // setUser(newUser)
+                    setUser(newUser)
                     setErrors(["You are logged in!"])
                 })
             }
@@ -50,10 +51,10 @@ function Account() {
         .then((r) => {
             if (r.ok) {
                 console.log(r)
-                // r.json().then((newUser) => {
-                    // setUser(newUser)
-                    // setErrors(["You are logged in!"])
-                //  })
+                r.json().then((newUser) => {
+                    setUser(newUser)
+                    setErrors(["You are logged in!"])
+                 })
             }
             else {
                 r.json().then((err) => setErrors(err.errors))
@@ -68,6 +69,8 @@ function Account() {
                 <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} ></input><br></br>
                 <label>Password:</label><br></br>
                 <input type="text" id="password" value={password} onChange={(e) => setPassword(e.target.value)} ></input><br></br>
+                <label>Maaser Percentage:</label><br></br>
+                <input type="text" id="percentage" value={percentage} onChange={(e) => setPercentage(e.target.value)} ></input><br></br>
                 <button type="submit">Sign Up</button>
             </form>
         </div>
@@ -79,8 +82,6 @@ function Account() {
                 <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} ></input><br></br>
                 <label>Password:</label><br></br>
                 <input type="text" id="password" value={password} onChange={(e) => setPassword(e.target.value)} ></input><br></br>
-                {/* <label>Maaser Percentage:</label><br></br>
-                <input type="text" id="percentage" value={percentage} onChange={(e) => setPercentage(e.target.value)} ></input><br></br> */}
                 <button type="submit">Log In</button>
                 {allErrors}
             </form>
