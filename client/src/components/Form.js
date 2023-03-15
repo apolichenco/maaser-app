@@ -1,6 +1,9 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
+import { UserContext } from '../context/user';
 
 function Form() {
+
+    const {favCharities} = useContext(UserContext)
 
     const [newIncomeAmount, setNewIncomeAmount] = useState("")
     const [newNotes, setNewNotes] = useState("")
@@ -8,7 +11,6 @@ function Form() {
     const [newMaaserExempt, setMaaserExempt] = useState(false)
     const [newDonationAmount, setNewDonationAmount] = useState("")
     const [donationCharityId, setDonationCharityId] = useState("")
-
 
     function fetchForNewIncome(e) {
         e.preventDefault()
@@ -104,6 +106,9 @@ function Form() {
                 <br></br>
                 <input type="text" id="price" value={newDonationAmount} onChange={(e) => setNewDonationAmount(e.target.value)}></input>
                 <br></br>
+                <select onChange={(e) => setDonationCharityId(e.target.value)}>
+                    {favCharities.map((charity) => <option key={charity.charity.id} value={charity.charity.id}>{charity.charity.name}</option>)}
+                </select>
                 <button type="submit">Submit</button>
             </form>
         </div>

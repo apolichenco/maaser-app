@@ -6,11 +6,12 @@ import Form from './Form';
 import Account from './Account';
 import HomePage from './HomePage';
 import Charities from './Charities';
+import { UserContext } from '../context/user';
 
 
 function App() {
 
-    
+    const {setUser} = useContext(UserContext)
 
     return (
         <div>
