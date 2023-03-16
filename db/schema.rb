@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_10_002625) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_16_142121) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "charities", force: :cascade do |t|
     t.string "name"
     t.string "link"
-    t.boolean "favorite"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "donations", force: :cascade do |t|
@@ -28,6 +28,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_002625) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "month"
+    t.integer "year"
   end
 
   create_table "fav_charities", force: :cascade do |t|
@@ -45,6 +47,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_002625) do
     t.boolean "maaser_exempt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "month"
+    t.integer "year"
   end
 
   create_table "subscriptions", force: :cascade do |t|

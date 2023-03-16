@@ -24,7 +24,7 @@ function AllCharities() {
                 return (
                     <div key={charity.id}>
                         <h4>{charity.name}</h4>
-                        <h5>{charity.link}</h5>
+                        <a href={charity.link} target="_blank">{charity.link}</a>
                     </div>
                 )
             })}
