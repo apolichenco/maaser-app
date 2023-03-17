@@ -10,29 +10,17 @@ function HomePage() {
 
     return (
         <div>
-            <NavLink to="../home/general">
-                General
-            </NavLink>
-            <NavLink to="../home/income-data">
-                Income Data
-            </NavLink>
-            <NavLink to="../home/donations-data">
-                Donations Data
-            </NavLink>
-            <NavLink to="../home/charities-data">
-                Charity Data
-            </NavLink>
             <Switch>
-                <Route path="/home/general">
+                <Route path="/general">
                     <GeneralLook />
                 </Route>
-                <Route path="/home/income-data">
+                <Route path="/income-data">
                     <IncomeData />
                 </Route>
-                <Route path="/home/donations-data">
+                <Route path="/donations-data">
                     <OutcomeData />
                 </Route>
-                <Route path="/home/charities-data">
+                <Route path="/charities-data">
                     <CharityData />
                 </Route>
             </Switch>

@@ -24,10 +24,6 @@ Things you may want to cover:
 * ...
 
 # Notes
-<!-- * take off favorite from charity -->
-<!-- * add image to charity -->
-* make link workable in lists of charities
-<!-- * add date to all that need (add month and year) -->
 * Header on the side
 * Send mini header to the side, in a kind of dropdown
 * where can add new charity?
