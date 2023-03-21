@@ -1,8 +1,8 @@
 import React, {useContext, useState, useEffect} from 'react';
-import CharityData from './overview/CharityData';
-import GeneralLook from './overview/GeneralLook';
-import IncomeData from './overview/IncomeData';
-import OutcomeData from './overview/OutcomeData';
+import CharityData from './CharityData';
+import GeneralLook from './GeneralLook';
+import IncomeData from './IncomeData';
+import OutcomeData from './OutcomeData';
 import { Route, Switch, NavLink } from "react-router-dom";
 
 function HomePage() {

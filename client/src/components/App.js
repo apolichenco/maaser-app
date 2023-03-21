@@ -1,11 +1,11 @@
 import React, {useContext, useState, useEffect} from 'react';
 import { Route, Switch } from "react-router-dom";
 import '../App.css';
-import Header from './Header';
-import Form from './Form';
-import Account from './Account';
-import HomePage from './HomePage';
-import Charities from './Charities';
+import Header from './header/Header';
+import Form from './forms/Form';
+import Account from './account-page/Account';
+import HomePage from './overview/HomePage';
+import Charities from './charities/Charities'
 import { UserContext } from '../context/user';
 
 

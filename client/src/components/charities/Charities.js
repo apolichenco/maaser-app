@@ -1,7 +1,7 @@
 import React, {useContext, useState, useEffect} from 'react';
 import { Route, Switch } from "react-router-dom";
-import { UserContext } from '../context/user';
-import SingleCharity from './charities/SingleCharity';
+import { UserContext } from '../../context/user';
+import SingleCharity from './SingleCharity';
 
 function Charities() {
     const [charitiesList, setCharitiesList] = useState([])

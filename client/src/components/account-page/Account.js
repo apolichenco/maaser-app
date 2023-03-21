@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import { UserContext } from '../context/user';
+import { UserContext } from '../../context/user';
 
 function Account() {
     const [name, setName] = useState("")
