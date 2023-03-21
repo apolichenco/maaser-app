@@ -97,7 +97,7 @@ function Account() {
     return (
         <div>
             {typeOfLogIn ? signingUp : loggingIn}
-            <a href="./log-in"><button onClick={deleteUser} style={{margin: 15}}>Log Out</button></a>
+            <button onClick={deleteUser} style={{margin: 15}}>Log Out</button>
         </div>
     )
 

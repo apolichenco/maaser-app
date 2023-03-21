@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  resources :fav_charities, only: [:update, :destroy, :index]
+  resources :fav_charities, only: [:create, :destroy, :index]
   resources :donations, only: [:create, :update, :index]
   resources :subscriptions, only: [:create, :update, :destroy, :index]
   resources :charities, only: [:create, :index]
   resources :incomes, only: [:create, :update, :destroy, :index]
-  resources :users, only: [:index]
+  # resources :users, only: [:index]
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
   post "/login", to: "sessions#create"

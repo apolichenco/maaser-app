@@ -1,9 +1,20 @@
 import React, {useContext, useState, useEffect} from 'react';
 import { UserContext } from '../../context/user';
 
-function SingleCharity({charityData}) {
+function SingleCharity({charityData, alreadyAFavorite}) {
 
-    const {user} = useContext(UserContext)
+    const {user, addFavCharity, removeFavCharity} = useContext(UserContext)
+
+    const [likedOrNot, setLikedOrNot] = useState(false)
+
+    useEffect(() => {
+        if (alreadyAFavorite.includes(charityData.id)) {
+            setLikedOrNot(false)
+        }
+        else {
+            setLikedOrNot(true)
+        }
+    }, [])
 
 
     function favoriteACharity() {
@@ -11,7 +22,6 @@ function SingleCharity({charityData}) {
                 charity_id: charityData.id,
                 user_id: user.id
             }
-            console.log(newFavCharity)
             fetch("/fav_charities", {
                 method: "POST",
                 headers: {
@@ -21,7 +31,10 @@ function SingleCharity({charityData}) {
             })
             .then((r) => {
                 if (r.ok) {
-                    r.json().then((data) => console.log(data))
+                    r.json().then((data) => {
+                        addFavCharity(data)
+                        setLikedOrNot(!likedOrNot)
+                    })
                 }
                 else {
                     r.json().then((err) => console.log(err))
@@ -29,12 +42,20 @@ function SingleCharity({charityData}) {
             })
         }
 
+        function deleteFavCharity() {
+                fetch(`/fav_charities/${charityData.id}`, {method: "DELETE"})
+                .then((r) => {
+                    removeFavCharity(charityData.id)
+                    setLikedOrNot(!likedOrNot)
+                })
+        }
+
     return (
         <div  key={charityData.id}>
             <h4>{charityData.name}</h4>
             <a href={charityData.link} target="_blank">{charityData.link}</a>
-            <button></button>
-            <button onClick={favoriteACharity}>Like</button>
+            <br></br>
+            {likedOrNot ? <button onClick={favoriteACharity}>Like</button> : <button onClick={deleteFavCharity}>Remove off my list</button>}
         </div>
     );
 

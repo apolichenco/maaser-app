@@ -1,5 +1,7 @@
 class FavCharitiesController < ApplicationController
 
+    before_action :authorize
+
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     def destroy
@@ -14,8 +16,14 @@ class FavCharitiesController < ApplicationController
 
     def index
         fav_charities = FavCharity.all
-        render json: charities, status: :created
+        render json: fav_charities, status: :created
     end
+
+    def create
+        fav_charity = FavCharity.create!(params.permit(:user_id, :charity_id))
+        render json: fav_charity, status: :created
+    end
+
 
     private
 

@@ -23,9 +23,17 @@ const UserProvider = ({children}) => {
             }) 
       }, [])
 
+      function addFavCharity(newFavCharity) {
+        setFavCharities([...favCharities, newFavCharity])
+      }
+
+      function removeFavCharity(deletedId) {
+        setFavCharities(favCharities.filter((favCharity) => favCharity.id !== deletedId))
+      }
+
 
       return (
-        <UserContext.Provider value={ {user, setUser, favCharities, setFavCharities}}>
+        <UserContext.Provider value={ {user, setUser, favCharities, addFavCharity, removeFavCharity}}>
             {children}
         </UserContext.Provider>
     )
