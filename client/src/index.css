@@ -17,7 +17,7 @@ code {
   /* overflow: auto; Enable scrolling if the sidenav has too much content */
   border: 1px solid #555;
   height: 100%;
-  width: 195px;
+  width: 145px;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -28,7 +28,7 @@ code {
 }
 
 .main {
-  margin-left: 200px;
+  margin-left: 195px;
   text-align: center;
 }
 
@@ -55,7 +55,7 @@ code {
   color: white;
 }
 
-.header-button.active {
+.header-button .active {
   background-color: #000;
   color: white;
 }

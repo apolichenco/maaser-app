@@ -62,6 +62,13 @@ function Account() {
         })
     }
 
+    function deleteUser() {
+        fetch("/logout", {method: "DELETE"})
+        .then((r) => {
+            setUser(false)
+        })
+    }
+
     const signingUp =  <div>
             <h3>Already a user? Press <button onClick={(e) => setTypeOfLogIn(false)}>Log In</button></h3>
             <form onSubmit={handleSignUp}>
@@ -90,15 +97,16 @@ function Account() {
     return (
         <div>
             {typeOfLogIn ? signingUp : loggingIn}
+            <a href="./log-in"><button onClick={deleteUser} style={{margin: 15}}>Log Out</button></a>
         </div>
     )
 
 
-    return (
-        <div>
+    // return (
+    //     <div>
             
-        </div>
-    );
+    //     </div>
+    // );
 
 }
 export default Account;

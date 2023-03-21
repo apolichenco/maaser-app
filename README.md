@@ -24,10 +24,11 @@ Things you may want to cover:
 * ...
 
 # Notes
-* Header on the side
-* Send mini header to the side, in a kind of dropdown
+<!-- * Header on the side -->
+<!-- * Send mini header to the side, in a kind of dropdown -->
 * where can add new charity?
 * Add fav button to all charity List
 * add subscriptions to new donations
 * Account page, not just login
 * logout button
+* option to make a charity private?
