@@ -1,20 +1,38 @@
 import React, {useContext, useState, useEffect} from 'react';
 import { UserContext } from '../../context/user';
 
-function SingleCharity({charityData, alreadyAFavorite}) {
+function SingleCharity({charityData, idsList}) {
 
-    const {user, addFavCharity, removeFavCharity} = useContext(UserContext)
+    const {user, addFavCharity, removeFavCharity, favCharities} = useContext(UserContext)
 
     const [likedOrNot, setLikedOrNot] = useState(false)
+    const [favCharityId, setFavCharityId] = useState([])
+
 
     useEffect(() => {
-        if (alreadyAFavorite.includes(charityData.id)) {
+        setFavCharityId(favCharities.filter((favCharity) => favCharity.charity.id === charityData.id))
+        // console.log(favCharityId.length == 1)
+        if (favCharityId.length == 1) {
             setLikedOrNot(false)
         }
         else {
             setLikedOrNot(true)
         }
-    }, [])
+        // if (idsList.includes(charityData.id)) {
+        //     setLikedOrNot(false)
+        // }
+        // else {
+        //     setLikedOrNot(true)
+        // }
+    }, [likedOrNot])
+
+    // const favCharityId = favCharities.filter((favCharity) => favCharity.charity.id === charityData.id)
+    //     if (favCharityId) {
+    //         setLikedOrNot(false)
+    //     }
+    //     else {
+    //         setLikedOrNot(true)
+    //     }
 
 
     function favoriteACharity() {
@@ -33,7 +51,7 @@ function SingleCharity({charityData, alreadyAFavorite}) {
                 if (r.ok) {
                     r.json().then((data) => {
                         addFavCharity(data)
-                        setLikedOrNot(!likedOrNot)
+                        setLikedOrNot(false)
                     })
                 }
                 else {
@@ -41,11 +59,12 @@ function SingleCharity({charityData, alreadyAFavorite}) {
                 }
             })
         }
+        // console.log(favCharityId[0].id)
 
         function deleteFavCharity() {
-                fetch(`/fav_charities/${charityData.id}`, {method: "DELETE"})
+                fetch(`/fav_charities/${favCharityId[0].id}`, {method: "DELETE"})
                 .then((r) => {
-                    removeFavCharity(charityData.id)
+                    removeFavCharity(favCharityId[0].id)
                     setLikedOrNot(!likedOrNot)
                 })
         }

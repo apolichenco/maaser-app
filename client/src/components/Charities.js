@@ -21,18 +21,17 @@ function Charities() {
         })
     }, [])
 
-        const favCharitiesIds = favCharities.map((favCharity) => {
-            return favCharity.charity.id   
-            })
+    const favCharitiesIds = favCharities.map((favCharity) => favCharity.charity.id)
+
 
     return (
         <div>
             <Switch>
                 <Route path="/all-charities">
-                    {charitiesList.map((charity) => <SingleCharity key={charity.id} charityData={charity} alreadyAFavorite={favCharitiesIds}/>)}
+                    {charitiesList.map((charity) => <SingleCharity key={charity.id} charityData={charity} idsList={favCharitiesIds} favCharities={favCharities} />)}
                 </Route>
                 <Route path="/my-saved-charities">
-                    {favCharities.map((charity) => <SingleCharity key={charity.charity.id} charityData={charity.charity} alreadyAFavorite={favCharitiesIds}/>)}
+                    {favCharities.map((charity) => <SingleCharity key={charity.charity.id} charityData={charity.charity} idsList={favCharitiesIds}/>)}
                 </Route>
             </Switch>
         </div>
