@@ -1,38 +1,23 @@
 import React, {useContext, useState, useEffect} from 'react';
 import { UserContext } from '../../context/user';
 
-function SingleCharity({charityData, idsList}) {
+function SingleCharity({charityData}) {
 
-    const {user, addFavCharity, removeFavCharity, favCharities} = useContext(UserContext)
+    const {user, addFavCharity, removeFavCharity, userFavCharities} = useContext(UserContext)
 
     const [likedOrNot, setLikedOrNot] = useState(false)
     const [favCharityId, setFavCharityId] = useState([])
 
 
     useEffect(() => {
-        setFavCharityId(favCharities.filter((favCharity) => favCharity.charity.id === charityData.id))
-        // console.log(favCharityId.length == 1)
+        setFavCharityId(userFavCharities.filter((favCharity) => favCharity.charity.id === charityData.id))
         if (favCharityId.length == 1) {
             setLikedOrNot(false)
         }
         else {
             setLikedOrNot(true)
         }
-        // if (idsList.includes(charityData.id)) {
-        //     setLikedOrNot(false)
-        // }
-        // else {
-        //     setLikedOrNot(true)
-        // }
     }, [likedOrNot])
-
-    // const favCharityId = favCharities.filter((favCharity) => favCharity.charity.id === charityData.id)
-    //     if (favCharityId) {
-    //         setLikedOrNot(false)
-    //     }
-    //     else {
-    //         setLikedOrNot(true)
-    //     }
 
 
     function favoriteACharity() {
@@ -59,7 +44,6 @@ function SingleCharity({charityData, idsList}) {
                 }
             })
         }
-        // console.log(favCharityId[0].id)
 
         function deleteFavCharity() {
                 fetch(`/fav_charities/${favCharityId[0].id}`, {method: "DELETE"})

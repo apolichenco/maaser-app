@@ -18,12 +18,14 @@ function Header() {
     return (
         <div className='header-box'>
             <h2>Menu</h2>
-            <h4 className='header-button' onClick={homeDropdownChange}>Home</h4>
+            <NavLink to="../general">
+                <h4 className='header-button' onClick={homeDropdownChange}>Home</h4>
+            </NavLink>
             {homeDropdown ? 
                 <div>
-                    <NavLink to="../general">
-                        <h6 className='header-button'>General</h6>
-                    </NavLink>
+                    {/* <NavLink to="../general"> */}
+                        {/* <h6 className='header-button'>General</h6> */}
+                    {/* </NavLink> */}
                     <NavLink to="../income-data">
                         <h6 className='header-button'>Income Data</h6>
                     </NavLink>
@@ -42,7 +44,7 @@ function Header() {
                     <h6 className='header-button'>All Charities</h6>
                     </NavLink>
                     <NavLink to="../my-saved-charities">
-                        <h6 className='header-button'>My Saved Charities</h6>
+                        <h6 className='header-button'>My Charities</h6>
                     </NavLink>
                 </div> : null
             }

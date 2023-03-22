@@ -4,7 +4,10 @@ const UserContext = createContext(null);
 
 const UserProvider = ({children}) => {
     const [user, setUser] = useState(false)
-    const [favCharities, setFavCharities] = useState([])
+    const [userFavCharities, setUserFavCharities] = useState([])
+    const [userIncomes, setUserIncomes] = useState([])
+    const [userDonations, setUserDonations] = useState([])
+
 
 
     useEffect(() => {
@@ -14,7 +17,9 @@ const UserProvider = ({children}) => {
                     r.json()
                     .then((data) => {
                         setUser(data)
-                        setFavCharities(data.fav_charities)
+                        setUserFavCharities(data.fav_charities)
+                        setUserDonations(data.donations)
+                        setUserIncomes(data.incomes)
                     })
                 }
                 else {
@@ -24,16 +29,21 @@ const UserProvider = ({children}) => {
       }, [])
 
       function addFavCharity(newFavCharity) {
-        setFavCharities([...favCharities, newFavCharity])
+        setUserFavCharities([...userFavCharities, newFavCharity])
       }
 
       function removeFavCharity(deletedId) {
-        setFavCharities(favCharities.filter((favCharity) => favCharity.id !== deletedId))
+        setUserFavCharities(userFavCharities.filter((favCharity) => favCharity.id !== deletedId))
       }
 
 
       return (
-        <UserContext.Provider value={ {user, setUser, favCharities, addFavCharity, removeFavCharity}}>
+        <UserContext.Provider value={ {
+            user, setUser, 
+            userFavCharities, addFavCharity, removeFavCharity, 
+            userDonations,
+            userIncomes
+        }}>
             {children}
         </UserContext.Provider>
     )

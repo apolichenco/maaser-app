@@ -7,7 +7,7 @@ function Charities() {
     const [charitiesList, setCharitiesList] = useState([])
     const [errors, setErrors] = useState([])
 
-    const {favCharities} = useContext(UserContext)
+    const {userFavCharities} = useContext(UserContext)
 
     useEffect(() => {
         fetch("/charities")
@@ -21,17 +21,17 @@ function Charities() {
         })
     }, [])
 
-    const favCharitiesIds = favCharities.map((favCharity) => favCharity.charity.id)
+    // const favCharitiesIds = userFavCharities.map((favCharity) => favCharity.charity.id)
 
 
     return (
         <div>
             <Switch>
                 <Route path="/all-charities">
-                    {charitiesList.map((charity) => <SingleCharity key={charity.id} charityData={charity} idsList={favCharitiesIds} favCharities={favCharities} />)}
+                    {charitiesList.map((charity) => <SingleCharity key={charity.id} charityData={charity}/>)}
                 </Route>
                 <Route path="/my-saved-charities">
-                    {favCharities.map((charity) => <SingleCharity key={charity.charity.id} charityData={charity.charity} idsList={favCharitiesIds}/>)}
+                    {userFavCharities.map((charity) => <SingleCharity key={charity.charity.id} charityData={charity.charity}/>)}
                 </Route>
             </Switch>
         </div>
