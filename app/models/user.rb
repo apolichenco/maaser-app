@@ -17,16 +17,17 @@ class User < ApplicationRecord
         income_total
     end
 
-    def maaser_to_give
-        income_total = self.total_income
-        to_give = income_total / self.percentage
-        to_give - self.total_donated
-    end
-
     def total_donated
         donations_total = 0
         self.donations.map { |donation| donations_total += donation.amount } 
         donations_total
+    end
+
+    def maaser_to_give
+        income_total = self.total_income
+        to_give = income_total / self.percentage
+        total_to_give = to_give - self.total_donated
+        total_to_give
     end
 
 end

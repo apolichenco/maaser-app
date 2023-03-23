@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_16_142121) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_22_031426) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_142121) do
   end
 
   create_table "donations", force: :cascade do |t|
-    t.float "amount"
+    t.decimal "amount", precision: 30, scale: 2
     t.integer "charity_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -40,7 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_142121) do
   end
 
   create_table "incomes", force: :cascade do |t|
-    t.float "amount"
+    t.decimal "amount", precision: 30, scale: 2
     t.string "notes"
     t.boolean "repeat"
     t.integer "user_id"
@@ -55,7 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_142121) do
     t.integer "day_of_month"
     t.integer "user_id"
     t.integer "charity_id"
-    t.float "amount"
+    t.decimal "amount", precision: 30, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

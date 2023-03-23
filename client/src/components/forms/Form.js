@@ -3,7 +3,7 @@ import { UserContext } from '../../context/user';
 
 function Form() {
 
-    const {favCharities} = useContext(UserContext)
+    const {user, userFavCharities, addDonation, addIncome} = useContext(UserContext)
 
     const [newIncomeAmount, setNewIncomeAmount] = useState("")
     const [newNotes, setNewNotes] = useState("")
@@ -12,6 +12,13 @@ function Form() {
     const [newDonationAmount, setNewDonationAmount] = useState("")
     const [donationCharityId, setDonationCharityId] = useState("")
 
+    useEffect(() => {
+        const fetchData = async () => {
+            setDonationCharityId(userFavCharities[0].charity.id);
+        }
+        fetchData()
+      }, [])
+
     function fetchForNewIncome(e) {
         e.preventDefault()
         const newIncome = {
@@ -19,52 +26,54 @@ function Form() {
             notes: newNotes,
             repeat: newRepeat,
             maaser_exempt: newMaaserExempt,
-            user_id: "user.id"
+            user_id: user.id
         }
-        console.log(newIncome)
-        // fetch("/incomes", {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json", 
-        //     },
-        //     body: JSON.stringify(newIncome),
-        // })
-        // .then((r) => {
-        //     if (r.ok) {
-        //         r.json().then((data) => console.log(data))
-        //     }
-        //     else {
-        //         r.json().then((err) => console.log(err))
-        //     }
-        // })
+        fetch("/incomes", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json", 
+            },
+            body: JSON.stringify(newIncome),
+        })
+        .then((r) => {
+            if (r.ok) {
+                r.json().then((data) => {
+                    console.log(data)
+                    addIncome(data)
+                })
+            }
+            else {
+                r.json().then((err) => console.log(err))
+            }
+        })
     }
 
     function fetchForNewDonation(e) {
         e.preventDefault()
         const newDonation = {
             amount: newDonationAmount,
-            user_id: "user.id",
+            user_id: user.id,
             charity_id: donationCharityId
         }
-        console.log(newDonation)
-        // fetch("/donations", {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json", 
-        //     },
-        //     body: JSON.stringify(newDonation),
-        // })
-        // .then((r) => {
-        //     if (r.ok) {
-        //         r.json()
-        //         .then((data) => {
-        //             console.log(data)
-        //         })
-        //     }
-        //     else {
-        //         r.json().then((err) => console.log(err.errors))
-        //     }
-        // })
+        fetch("/donations", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json", 
+            },
+            body: JSON.stringify(newDonation),
+        })
+        .then((r) => {
+            if (r.ok) {
+                r.json()
+                .then((data) => {
+                    console.log(data)
+                    addDonation(data)
+                })
+            }
+            else {
+                r.json().then((err) => console.log(err.errors))
+            }
+        })
     }
 
 
@@ -75,13 +84,13 @@ function Form() {
                 <br></br>
                 <label>Amount:</label>
                 <br></br>
-                <input type="text" id="price" value={newIncomeAmount} onChange={(e) => setNewIncomeAmount(e.target.value)}></input>
+                $<input type="text" id="price" value={newIncomeAmount} onChange={(e) => setNewIncomeAmount(e.target.value)}></input>
                 <br></br>
                 <label>Notes:</label>
                 <br></br>
                 <input type="text" id="price" value={newNotes} onChange={(e) => setNewNotes(e.target.value)}></input>
                 <br></br>
-                <label>Repeat?</label>
+                {/* <label>Repeat?</label>
                 <br></br>
                 <input type="radio" id="price" name="repeat" value="true" onChange={(e) => setNewRepeat(e.target.value)}></input>
                 <label>True</label>
@@ -94,7 +103,7 @@ function Form() {
                 <label>True</label>
                 <input type="radio" id="maaser_exempt" name="maaser_exempt" value="false" onChange={(e) => setMaaserExempt(e.target.value)}></input>
                 <label>False</label>
-                <br></br>
+                <br></br> */}
                 <button type="submit">Submit</button>
             </form>
             <br></br>
@@ -104,10 +113,10 @@ function Form() {
                 <br></br>
                 <label>Amount:</label>
                 <br></br>
-                <input type="text" id="price" value={newDonationAmount} onChange={(e) => setNewDonationAmount(e.target.value)}></input>
+                $<input type="text" id="price" value={newDonationAmount} onChange={(e) => setNewDonationAmount(e.target.value)}></input>
                 <br></br>
                 <select onChange={(e) => setDonationCharityId(e.target.value)}>
-                    {favCharities.map((charity) => <option key={charity.charity.id} value={charity.charity.id}>{charity.charity.name}</option>)}
+                    {userFavCharities.map((charity) => <option key={charity.charity.id} value={charity.charity.id}>{charity.charity.name}</option>)}
                 </select>
                 <button type="submit">Submit</button>
             </form>

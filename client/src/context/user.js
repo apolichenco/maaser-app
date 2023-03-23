@@ -36,13 +36,20 @@ const UserProvider = ({children}) => {
         setUserFavCharities(userFavCharities.filter((favCharity) => favCharity.id !== deletedId))
       }
 
+      function addIncome(newIncome) {
+        setUserIncomes([...userIncomes, newIncome])
+      }
+
+      function addDonation(newDonation) {
+        setUserDonations([...userDonations, newDonation])
+      }
 
       return (
         <UserContext.Provider value={ {
             user, setUser, 
             userFavCharities, addFavCharity, removeFavCharity, 
-            userDonations,
-            userIncomes
+            userDonations, addDonation,
+            userIncomes, addIncome
         }}>
             {children}
         </UserContext.Provider>
