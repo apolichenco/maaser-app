@@ -1,4 +1,5 @@
 import React, {useContext, useState} from 'react';
+import {useHistory} from "react-router-dom"
 import { UserContext } from '../../context/user';
 
 function SignIn() {
@@ -9,6 +10,12 @@ function SignIn() {
     const [typeOfLogIn, setTypeOfLogIn] = useState(false)
 
     const {setUser} = useContext(UserContext)
+
+    let history = useHistory();
+
+    function redirectToHome() {
+        history.push('/general')
+    }
 
     let allErrors = []
     if (errors) {
@@ -29,6 +36,7 @@ function SignIn() {
         .then((r) => {
             if (r.ok) {
                 r.json().then((newUser) => {
+                    redirectToHome()
                     setUser(newUser)
                     setErrors(["You are logged in!"])
                 })
@@ -49,15 +57,16 @@ function SignIn() {
             body: JSON.stringify({name, password}),
         })
         .then((r) => {
-            if (r.ok) {
-                console.log(r)
-                r.json().then((newUser) => {
-                    setUser(newUser)
+            if (r.ok) {     
+                r.json()
+                .then((data) => {
+                    redirectToHome()
+                    setUser(data)
                     setErrors(["You are logged in!"])
                  })
             }
             else {
-                r.json().then((err) => setErrors(err.errors))
+                r.json().then((err) => console.log(err.errors))
             }
         })
     }

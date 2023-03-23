@@ -1,11 +1,10 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useState,} from 'react';
 import {NavLink} from "react-router-dom"
 
 function Header() {
 
     const [charityDropdown, setCharityDropdown] = useState(false)
     const [homeDropdown, setHomeDropdown] = useState(false)
-
 
     function charityDropdownChange() {
         setCharityDropdown(!charityDropdown)
@@ -23,9 +22,6 @@ function Header() {
             </NavLink>
             {homeDropdown ? 
                 <div>
-                    {/* <NavLink to="../general"> */}
-                        {/* <h6 className='header-button'>General</h6> */}
-                    {/* </NavLink> */}
                     <NavLink to="../income-data">
                         <h6 className='header-button'>Income Data</h6>
                     </NavLink>

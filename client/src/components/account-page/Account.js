@@ -7,8 +7,6 @@ function Account() {
 
     const {user} = useContext(UserContext)
 
-
-
     return (
         <div>
         {user ? <AccountInfo />  : <SignIn />}
