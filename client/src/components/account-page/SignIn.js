@@ -9,7 +9,7 @@ function SignIn() {
     const [errors, setErrors] = useState()
     const [typeOfLogIn, setTypeOfLogIn] = useState(false)
 
-    const {setUser} = useContext(UserContext)
+    const {setAllData, setUser} = useContext(UserContext)
 
     let history = useHistory();
 
@@ -26,23 +26,24 @@ function SignIn() {
 
     function handleSignUp(e) {
         e.preventDefault()
+        console.log({name, password, percentage})
         fetch("/signup", {
             method:"POST",
             headers: {
                 "Content-Type": "application/json", 
             },
-            body: JSON.stringify({name, password}),
+            body: JSON.stringify({name, password, percentage}),
         })
         .then((r) => {
             if (r.ok) {
-                r.json().then((newUser) => {
+                r.json().then((data) => {
                     redirectToHome()
-                    setUser(newUser)
+                    setUser(data)
                     setErrors(["You are logged in!"])
                 })
             }
             else {
-                r.json().then((err) => setErrors(err.errors))
+                r.json().then((err) => console.log(err.errors))
             }
         })
     }
@@ -61,7 +62,7 @@ function SignIn() {
                 r.json()
                 .then((data) => {
                     redirectToHome()
-                    setUser(data)
+                    setAllData(data)
                     setErrors(["You are logged in!"])
                  })
             }

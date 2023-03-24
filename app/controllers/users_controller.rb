@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    # rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response, 
     rescue_from  ActiveRecord::RecordInvalid, with: :render_unproccesable_entity_response
 
     def index
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
             session[:user_id] = user.id
             render json: user, status: :created
         else
-            render json: {errors: user.error.full_messages}, status: :unprocessable_entity
+            render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
         end
     end
 
@@ -38,11 +38,11 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:name, :password_digest, :percentage)
+        params.permit(:name, :password, :percentage)
     end
 
-    def render_not_found_response
-        render json: {errors: ["Account Not Found"]}, status: :not_found
-    end
+    # def render_not_found_response
+    #     render json: {errors: ["Account Not Found"]}, status: :not_found
+    # end
 
 end

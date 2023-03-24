@@ -13,21 +13,29 @@ class User < ApplicationRecord
 
     def total_income
         income_total = 0
-        self.incomes.map { |income| income_total += income.amount } 
-        income_total
+        if self.incomes
+            self.incomes.map { |income| income_total += income.amount } 
+            income_total
+        # else 
+        #     null
+        end
     end
 
     def total_donated
         donations_total = 0
-        self.donations.map { |donation| donations_total += donation.amount } 
-        donations_total
+        if self.donations
+            self.donations.map { |donation| donations_total += donation.amount } 
+            donations_total
+        end
     end
 
     def maaser_to_give
-        income_total = self.total_income
-        to_give = income_total / self.percentage
-        total_to_give = to_give - self.total_donated
-        total_to_give
+        if self.incomes.length > 0
+            to_give = self.total_income / self.percentage
+            total_to_give = to_give - self.total_donated
+            total_to_give
+        end
     end
+
 
 end

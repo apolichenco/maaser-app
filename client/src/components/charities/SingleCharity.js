@@ -56,7 +56,7 @@ function SingleCharity({charityData}) {
     return (
         <div  key={charityData.id}>
             <h4>{charityData.name}</h4>
-            <a href={charityData.link} target="_blank">{charityData.link}</a>
+            <a href={charityData.link} target="_blank">Donate to {charityData.name}</a>
             <br></br>
             {likedOrNot ? <button onClick={favoriteACharity}>Like</button> : <button onClick={deleteFavCharity}>Remove off my list</button>}
         </div>

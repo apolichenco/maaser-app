@@ -8,7 +8,13 @@ const UserProvider = ({children}) => {
     const [userIncomes, setUserIncomes] = useState([])
     const [userDonations, setUserDonations] = useState([])
 
-
+    function setAllData(data) {
+        console.log(data)
+        setUser(data)
+        setUserFavCharities(data.fav_charities)
+        setUserDonations(data.donations)
+        setUserIncomes(data.incomes) 
+    }
 
     useEffect(() => {
            fetch("/me")
@@ -16,10 +22,12 @@ const UserProvider = ({children}) => {
                 if (r.ok) {
                     r.json()
                     .then((data) => {
-                        setUser(data)
-                        setUserFavCharities(data.fav_charities)
-                        setUserDonations(data.donations)
-                        setUserIncomes(data.incomes)
+                        setAllData(data)
+                        // setUser(data)
+                        // setUserFavCharities(data.fav_charities)
+                        // setUserDonations(data.donations)
+                        // setUserIncomes(data.incomes)
+                        console.log(data)
                     })
                 }
                 else {
@@ -46,7 +54,7 @@ const UserProvider = ({children}) => {
 
       return (
         <UserContext.Provider value={ {
-            user, setUser, 
+            user, setUser, setAllData,
             userFavCharities, addFavCharity, removeFavCharity, 
             userDonations, addDonation,
             userIncomes, addIncome
