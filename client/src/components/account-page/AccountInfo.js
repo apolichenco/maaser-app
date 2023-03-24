@@ -4,16 +4,16 @@ import { UserContext } from '../../context/user';
 
 function AccountInfo() {
     
-    const {user, setUser} = useContext(UserContext)
+    const {user, setAllData} = useContext(UserContext)
 
-    const [editedPercentage, setEditedPercentage] = useState(user.percentage) 
+    const [editedPercentage, setEditedPercentage] = useState(user.percentecise_it) 
     const [editingStatus, setEditingStatus] = useState(true)
     const [errors, setErrors] = useState([])
 
     function deleteUser() {
         fetch("/logout", {method: "DELETE"})
         .then((r) => {
-            setUser(false)
+            setAllData(false)
         })
     }
 
@@ -29,14 +29,15 @@ function AccountInfo() {
                 "Content-Type": "application/json" ,
             },
             body: JSON.stringify({
-                percentage: editedPercentage
+                percentage: `0.${editedPercentage}`
             }),
         })
         .then((r) => {
             if (r.ok) {
                 r.json()
-                .then((updatedListing) => {
-                    setEditedPercentage(updatedListing.percentage)
+                .then((updatedUser) => {
+                    // setEditedPercentage(updatedUser.percentecise_it)
+                    setAllData(updatedUser)
                     setEditingStatus(true)
                     setErrors([])
                 })

@@ -6,5 +6,9 @@ class Donation < ApplicationRecord
     validates :amount, presence: true
     validates :charity_id, presence: true
     validates :user_id, presence: true
+    validates :month, presence: true
+    validates :year, presence: true
+
+
 
 end

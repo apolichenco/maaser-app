@@ -5,7 +5,7 @@ import {Chart as ChartJS} from 'chart.js/auto'
 
 function OutcomeData() {
 
-    const {user, userDonations} = useContext(UserContext)
+    const {userTotalDonations, userTotalMaaserGive, userDonations} = useContext(UserContext)
 
     const [outcomeData, setOutcomeData] = useState({
         labels: userDonations.map((data) => data.charity.name),
@@ -17,8 +17,8 @@ function OutcomeData() {
 
     return (
         <div>
-            <h3>Donated: ${user.total_donated}</h3>
-            <h3>Left to give: ${user.maaser_to_give}</h3>
+            <h3>Donated: ${userTotalDonations}</h3>
+            <h3>Left to give: ${userTotalMaaserGive}</h3>
             {/* {userDonations.map((donation) => {
                 console.log(donation)
                 return (

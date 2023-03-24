@@ -28,7 +28,7 @@ class IncomesController < ApplicationController
     private
 
     def income_params
-        params.permit(:amount, :notes, :repeat, :user_id, :maaser_exempt)
+        params.permit(:amount, :notes, :repeat, :user_id, :maaser_exempt, :month, :year)
     end
 
     def render_not_found_response

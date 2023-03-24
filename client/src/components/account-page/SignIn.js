@@ -26,13 +26,18 @@ function SignIn() {
 
     function handleSignUp(e) {
         e.preventDefault()
+        const newUser = {
+            name: name,
+            password: password,
+            percentage: `0.${percentage}`
+        }
         console.log({name, password, percentage})
         fetch("/signup", {
             method:"POST",
             headers: {
                 "Content-Type": "application/json", 
             },
-            body: JSON.stringify({name, password, percentage}),
+            body: JSON.stringify(newUser),
         })
         .then((r) => {
             if (r.ok) {

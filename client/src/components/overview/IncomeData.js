@@ -5,7 +5,7 @@ import {Chart as ChartJS} from 'chart.js/auto'
 
 function IncomeData() {
 
-    const {user, userIncomes} = useContext(UserContext)
+    const {userTotalIncome, userIncomes} = useContext(UserContext)
 
     // const [IncomeData, setIncomeData] = useState({
     //     labels: userIncomes.map((data) => data.charity.name),
@@ -15,11 +15,11 @@ function IncomeData() {
     //     }]
     // })
 
-    console.log(userIncomes)
+    // console.log(userIncomes)
 
     return (
         <div>
-            <h3>Total made: ${user.total_income}</h3>
+            <h3>Total made: ${userTotalIncome}</h3>
             {userIncomes.map((income) => {
                 return (
                     <div key={income.id}>
