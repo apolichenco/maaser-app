@@ -1,16 +1,25 @@
 import React, {useContext, useState, useEffect} from 'react';
 import { UserContext } from '../../context/user';
-
+import {Bar} from 'react-chartjs-2'
+import {Chart as ChartJS} from 'chart.js/auto'
 
 function OutcomeData() {
 
     const {user, userDonations} = useContext(UserContext)
 
+    const [outcomeData, setOutcomeData] = useState({
+        labels: userDonations.map((data) => data.charity.name),
+        datasets: [{
+            label: "You Gave",
+            data: userDonations.map((data) => data.amount)
+        }]
+    })
+
     return (
         <div>
             <h3>Donated: ${user.total_donated}</h3>
             <h3>Left to give: ${user.maaser_to_give}</h3>
-            {userDonations.map((donation) => {
+            {/* {userDonations.map((donation) => {
                 console.log(donation)
                 return (
                     <div key={donation.id}>
@@ -18,7 +27,10 @@ function OutcomeData() {
                         <h6>Donated to {donation.charity.name}</h6>
                     </div>
                 )
-            })}
+            })} */}
+            <div style={{width: 700}}>
+                <Bar data={outcomeData}/>
+            </div>
         </div>
     );
 

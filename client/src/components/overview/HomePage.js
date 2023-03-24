@@ -5,7 +5,9 @@ import IncomeData from './IncomeData';
 import OutcomeData from './OutcomeData';
 import { Route, Switch, NavLink } from "react-router-dom";
 
+
 function HomePage() {
+
 
 
     return (

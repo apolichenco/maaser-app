@@ -9,7 +9,6 @@ const UserProvider = ({children}) => {
     const [userDonations, setUserDonations] = useState([])
 
     function setAllData(data) {
-        console.log(data)
         setUser(data)
         setUserFavCharities(data.fav_charities)
         setUserDonations(data.donations)
@@ -23,11 +22,6 @@ const UserProvider = ({children}) => {
                     r.json()
                     .then((data) => {
                         setAllData(data)
-                        // setUser(data)
-                        // setUserFavCharities(data.fav_charities)
-                        // setUserDonations(data.donations)
-                        // setUserIncomes(data.incomes)
-                        console.log(data)
                     })
                 }
                 else {

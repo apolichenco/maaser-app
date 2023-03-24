@@ -38,7 +38,6 @@ function Form() {
         .then((r) => {
             if (r.ok) {
                 r.json().then((data) => {
-                    console.log(data)
                     addIncome(data)
                 })
             }
@@ -66,7 +65,6 @@ function Form() {
             if (r.ok) {
                 r.json()
                 .then((data) => {
-                    console.log(data)
                     addDonation(data)
                 })
             }
