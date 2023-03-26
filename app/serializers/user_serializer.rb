@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :password_digest, :percentecise_it, :total_income, :total_donated, :maaser_to_give, :percentage
+  attributes :id, :name, :password_digest, :total_income, :total_donated, :maaser_to_give, :percentage
 
   has_many :donations
   has_many :fav_charities

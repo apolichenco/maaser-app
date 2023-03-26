@@ -10,7 +10,11 @@ class User < ApplicationRecord
 
     validates :name, presence: true, uniqueness: true
     validates :password_digest, presence: true, uniqueness: true
-    validates :percentage, presence: true, numericality: {less_than_or_equal_to: 0.99}
+    validates :percentage, presence: true, numericality: {less_than_or_equal_to: 100}
+
+    def percentecise_it
+        self.percentage * 0.01
+      end
 
     def total_income
         income_total = 0
@@ -34,15 +38,13 @@ class User < ApplicationRecord
             self.incomes.map { |income| income_total += income.amount } 
             donations_total = 0
             self.donations.map { |donation| donations_total += donation.amount } 
-            to_give = (income_total * self.percentage) - donations_total
+            to_give = (income_total * percentecise_it) - donations_total
             sprintf('%.2f', to_give)
         end
         
     end
 
-    def percentecise_it
-        self.percentage * 100
-      end
+
 
 
 end

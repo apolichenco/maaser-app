@@ -6,7 +6,7 @@ function AccountInfo() {
     
     const {user, setAllData} = useContext(UserContext)
 
-    const [editedPercentage, setEditedPercentage] = useState(user.percentecise_it) 
+    const [editedPercentage, setEditedPercentage] = useState(user.percentage) 
     const [editingStatus, setEditingStatus] = useState(true)
     const [errors, setErrors] = useState([])
 
@@ -29,7 +29,7 @@ function AccountInfo() {
                 "Content-Type": "application/json" ,
             },
             body: JSON.stringify({
-                percentage: `0.${editedPercentage}`
+                percentage: editedPercentage
             }),
         })
         .then((r) => {

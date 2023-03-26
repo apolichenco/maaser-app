@@ -29,7 +29,7 @@ function SignIn() {
         const newUser = {
             name: name,
             password: password,
-            percentage: `0.${percentage}`
+            percentage: percentage
         }
         console.log({name, password, percentage})
         fetch("/signup", {
