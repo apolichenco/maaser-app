@@ -1,4 +1,6 @@
 class DonationSerializer < ActiveModel::Serializer
-  attributes :id, :amount, :charity, :user_id
+  attributes :id, :amount, :fav_charity, :user_id
+
+  belongs_to :fav_charity
 
 end

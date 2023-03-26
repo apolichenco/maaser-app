@@ -5,14 +5,14 @@ function Form() {
 
     const {user, userFavCharities, whenNewDonation, whenNewIncome} = useContext(UserContext)
 
-    const monthsList =["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    const monthsList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
     const [newIncomeAmount, setNewIncomeAmount] = useState("")
     const [newNotes, setNewNotes] = useState("")
     const [newRepeat, setNewRepeat] = useState(false)
     const [newMaaserExempt, setMaaserExempt] = useState(false)
     const [newDonationAmount, setNewDonationAmount] = useState("")
-    const [donationCharityId, setDonationCharityId] = useState("")
+    const [donationFavCharityId, setDonationFavCharityId] = useState("")
     const [incomeMonth, setIncomeMonth] = useState(monthsList[0])
     const [donationMonth, setDonationMonth] = useState(monthsList[0])
     const [incomeYear, setIncomeYear] = useState(2023)
@@ -20,7 +20,8 @@ function Form() {
 
     useEffect(() => {
         const fetchData = async () => {
-            setDonationCharityId(userFavCharities[0].charity.id);
+            setDonationFavCharityId(userFavCharities[0].id);
+            console.log(userFavCharities[0].id)
         }
         fetchData()
       }, [])
@@ -60,7 +61,7 @@ function Form() {
         const newDonation = {
             amount: newDonationAmount,
             user_id: user.id,
-            charity_id: donationCharityId,
+            fav_charity_id: donationFavCharityId,
             month: donationMonth,
             year: donationYear
         }
@@ -135,8 +136,8 @@ function Form() {
                 <br></br>
                 <label>Donated to:</label>
                 <br></br>
-                <select onChange={(e) => setDonationCharityId(e.target.value)}>
-                    {userFavCharities.map((charity) => <option key={charity.charity.id} value={charity.charity.id}>{charity.charity.name}</option>)}
+                <select onChange={(e) => setDonationFavCharityId(e.target.value)}>
+                    {userFavCharities.map((charity) => <option key={charity.id} value={charity.id}>{charity.charity.name}</option>)}
                 </select>
                 <br></br>
                 <label>Month:</label>

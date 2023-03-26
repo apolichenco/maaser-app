@@ -1,6 +1,5 @@
 class Charity < ApplicationRecord
 
-    has_many :donations
     has_many :subscriptions
     has_many :fav_charities
     has_many :users, through: :fav_charities

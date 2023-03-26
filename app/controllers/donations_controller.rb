@@ -24,7 +24,7 @@ class DonationsController < ApplicationController
     private
 
     def donation_params
-        params.permit(:amount, :charity_id, :user_id, :month, :year)
+        params.permit(:amount, :fav_charity_id, :user_id, :month, :year)
     end
 
     def render_not_found_response

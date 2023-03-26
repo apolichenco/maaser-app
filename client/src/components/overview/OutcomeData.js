@@ -8,7 +8,7 @@ function OutcomeData() {
     const {userTotalDonations, userTotalMaaserGive, userDonations} = useContext(UserContext)
 
     const [outcomeData, setOutcomeData] = useState({
-        labels: userDonations.map((data) => data.charity.name),
+        labels: userDonations.map((data) => data.name),
         datasets: [{
             label: "You Gave",
             data: userDonations.map((data) => data.amount)
