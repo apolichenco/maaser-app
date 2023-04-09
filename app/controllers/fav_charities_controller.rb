@@ -7,8 +7,12 @@ class FavCharitiesController < ApplicationController
     def destroy
         fav_charity = FavCharity.find(params[:id])
         if fav_charity.user.id == current_user_id
-            fav_charity.destroy
-            head :no_content
+            if fav_charity.donations.length > 0
+                render json: {errors: ["You already donated to this charity, so you can't remove it"]}, status: :unauthorized
+            else 
+                fav_charity.destroy
+                head :no_content            
+            end
         else
             render json: {errors: ["Not your subscription"]}, status: :unauthorized
         end

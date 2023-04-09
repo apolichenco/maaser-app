@@ -8,21 +8,27 @@ function GeneralLook() {
 
     const {user, userTotalIncome, userTotalDonations, userTotalMaaserGive} = useContext(UserContext)
 
-    // const [incomeData, setIncomeData] = useState({
-    //     labels: userIncomes.map((data) => data.charity.name),
-    //     datasets: [{
-    //         label: "You Gave",
-    //         data: userIncomes.map((data) => data.amount)
-    //     }]
-    // })
+    const monthsList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
+    const [allData, setaAllData] = useState({
+        labels: monthsList.map((month) => month),
+        datasets: [{
+            label: "You Made $",
+            data: user.month_total_incomes.map((data) => data)
+        },
+        {
+            label: "You Gave $",
+            data: user.month_total_donations.map((data) => data)
+        }]
+    })
+    
     return (
         <div>
             <h3>Total made: ${userTotalIncome}</h3>
             <h3>Donated: ${userTotalDonations}</h3>
             <h3>Left to give: ${userTotalMaaserGive}</h3>
-            <div style={{width: 200}}>
-                {/* <Bar chartData={incomeData}/> */}
+            <div style={{width: 700}}>
+                <Bar data={allData}/>
             </div>
         </div>
     );

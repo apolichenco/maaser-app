@@ -46,12 +46,17 @@ function SingleCharity({charityData}) {
         }
 
         function deleteFavCharity() {
-                fetch(`/fav_charities/${favCharityId[0].id}`, {method: "DELETE"})
-                .then((r) => {
+            fetch(`/fav_charities/${favCharityId[0].id}`, {method: "DELETE"})
+            .then((r) => { if (r.ok) {
                     removeFavCharity(favCharityId[0].id)
                     setLikedOrNot(!likedOrNot)
-                })
-        }
+            }
+            else {
+                r.json().then((err) => console.log(err.errors))
+            }
+        })
+    }
+        
 
     return (
         <div  key={charityData.id}>

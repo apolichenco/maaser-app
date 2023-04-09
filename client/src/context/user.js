@@ -21,20 +21,21 @@ const UserProvider = ({children}) => {
         setUserTotalMaaserGive(data.maaser_to_give)
     }
 
-    useEffect(() => {
-           fetch("/me")
-            .then((r) => {
-                if (r.ok) {
-                    r.json()
-                    .then((data) => {
-                        setAllData(data)
-                    })
-                }
-                else {
-                    r.json().then((err) => setUser(false))
-                }
-            }) 
-      }, [])
+    useEffect(()=>  {
+        fetch("/me")
+        .then((r) => {
+            if (r.ok) {
+                r.json()
+                .then((data) => {
+                    setAllData(data)
+                })
+            }
+            else {
+                r.json().then((err) => setUser(false))
+            }
+        }) 
+    }, [])
+
 
       function addFavCharity(newFavCharity) {
         setUserFavCharities([...userFavCharities, newFavCharity])

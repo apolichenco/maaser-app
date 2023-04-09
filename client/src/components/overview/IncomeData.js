@@ -5,21 +5,22 @@ import {Chart as ChartJS} from 'chart.js/auto'
 
 function IncomeData() {
 
-    const {userTotalIncome, userIncomes} = useContext(UserContext)
+    const {user, userTotalIncome, userIncomes} = useContext(UserContext)
 
-    // const [IncomeData, setIncomeData] = useState({
-    //     labels: userIncomes.map((data) => data.charity.name),
-    //     datasets: [{
-    //         label: "You Gave",
-    //         data: userIncomes.map((data) => data.amount)
-    //     }]
-    // })
+    const monthsList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-    // console.log(userIncomes)
+    const [incomeData, setIncomeData] = useState({
+        labels: monthsList.map((month) => month),
+        datasets: [{
+            label: "You Made $",
+            data: user.month_total_incomes.map((data) => data)
+        }]
+    })
+
 
     return (
         <div>
-            <h3>Total made: ${userTotalIncome}</h3>
+            {/* <h3>Total made: ${userTotalIncome}</h3>
             {userIncomes.map((income) => {
                 return (
                     <div key={income.id}>
@@ -27,9 +28,9 @@ function IncomeData() {
                         <h6>{income.notes}</h6>
                     </div>
                 )
-            })}
-            <div style={{width: 200}}>
-                {/* <Bar chartData={incomeData}/> */}
+            })}*/}
+            <div style={{width: 700}}> 
+                <Bar data={incomeData}/>
             </div>
         </div>
     );

@@ -36,14 +36,13 @@ function AccountInfo() {
             if (r.ok) {
                 r.json()
                 .then((updatedUser) => {
-                    // setEditedPercentage(updatedUser.percentecise_it)
                     setAllData(updatedUser)
                     setEditingStatus(true)
                     setErrors([])
                 })
             }
             else {
-                r.json().then((err) => setErrors(err.errors))
+                r.json().then((err) => console.log(err.errors))
             }
         })
     }

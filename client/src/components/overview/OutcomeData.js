@@ -5,26 +5,28 @@ import {Chart as ChartJS} from 'chart.js/auto'
 
 function OutcomeData() {
 
-    const {userTotalDonations, userTotalMaaserGive, userDonations} = useContext(UserContext)
+    const {user, userTotalDonations, userTotalMaaserGive, userDonations, userFavCharities} = useContext(UserContext)
+
+    const monthsList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
     const [outcomeData, setOutcomeData] = useState({
-        labels: userDonations.map((data) => data.name),
+        labels: monthsList.map((month) => month),
         datasets: [{
-            label: "You Gave",
-            data: userDonations.map((data) => data.amount)
+            label: "You Gave $",
+            data: user.month_total_donations.map((data) => data)
         }]
     })
 
     return (
         <div>
-            <h3>Donated: ${userTotalDonations}</h3>
+            {/* <h3>Donated: ${userTotalDonations}</h3>
             <h3>Left to give: ${userTotalMaaserGive}</h3>
-            {/* {userDonations.map((donation) => {
-                console.log(donation)
+            {userDonations.map((donation) => {
+                const thisCharity = userFavCharities.find((fav_charity) => donation.fav_charity_id == fav_charity.id)
                 return (
                     <div key={donation.id}>
                         <h5>${donation.amount}</h5>
-                        <h6>Donated to {donation.charity.name}</h6>
+                        <h6>Donated to {thisCharity.charity.name}</h6>
                     </div>
                 )
             })} */}

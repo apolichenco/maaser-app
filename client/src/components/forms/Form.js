@@ -21,7 +21,6 @@ function Form() {
     useEffect(() => {
         const fetchData = async () => {
             setDonationFavCharityId(userFavCharities[0].id);
-            console.log(userFavCharities[0].id)
         }
         fetchData()
       }, [])
@@ -65,7 +64,6 @@ function Form() {
             month: donationMonth,
             year: donationYear
         }
-        console.log(newDonation)
         fetch("/donations", {
             method: "POST",
             headers: {

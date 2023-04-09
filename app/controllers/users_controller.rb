@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     def show
         return render json: {errors: ["Not logged in"]}, status: :unauthorized unless session.include? :user_id
         user = User.find(session[:user_id])
-        render json: user, statu: :created
+        render json: user, status: :created
     end
 
     def update
