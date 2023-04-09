@@ -22,16 +22,7 @@ function CharityData() {
         <div>
             <h3>Donated: ${userTotalDonations}</h3>
             <h3>Left to give: ${userTotalMaaserGive}</h3>
-            {/* {userDonations.map((donation) => {
-                console.log(donation)
-                return (
-                    <div key={donation.id}>
-                        <h5>${donation.amount}</h5>
-                        <h6>Donated to {donation.charity.name}</h6>
-                    </div>
-                )
-            })} */}
-            <div style={{width: 600}}>
+            <div style={{margin: 'auto', width: 600}}>
                 <Pie data={outcomeData}/>
             </div>
         </div>

@@ -5,7 +5,7 @@ import {Chart as ChartJS} from 'chart.js/auto'
 
 function IncomeData() {
 
-    const {user} = useContext(UserContext)
+    const {user, userTotalIncome} = useContext(UserContext)
 
     const monthsList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
@@ -20,16 +20,8 @@ function IncomeData() {
 
     return (
         <div>
-            {/* <h3>Total made: ${userTotalIncome}</h3>
-            {userIncomes.map((income) => {
-                return (
-                    <div key={income.id}>
-                        <h5>${income.amount}</h5>
-                        <h6>{income.notes}</h6>
-                    </div>
-                )
-            })}*/}
-            <div style={{width: 650}}> 
+            <h3>Total made: ${userTotalIncome}</h3>
+            <div style={{ margin: 'auto', width:'95%', height: 25}}> 
                 <Line data={incomeData}/>
             </div>
         </div>

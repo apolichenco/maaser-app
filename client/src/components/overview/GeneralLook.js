@@ -27,7 +27,7 @@ function GeneralLook() {
             <h3>Total made: ${userTotalIncome}</h3>
             <h3>Donated: ${userTotalDonations}</h3>
             <h3>Left to give: ${userTotalMaaserGive}</h3>
-            <div style={{width: 650}}>
+            <div style={{margin: 'auto', width:'95%', height: 25}}>
                 <Bar data={allData}/>
             </div>
         </div>

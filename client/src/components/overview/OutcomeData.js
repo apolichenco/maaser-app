@@ -5,7 +5,7 @@ import {Chart as ChartJS} from 'chart.js/auto'
 
 function OutcomeData() {
 
-    const {user} = useContext(UserContext)
+    const {user, userTotalDonations} = useContext(UserContext)
 
     const monthsList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
@@ -19,18 +19,8 @@ function OutcomeData() {
 
     return (
         <div>
-            {/* <h3>Donated: ${userTotalDonations}</h3>
-            <h3>Left to give: ${userTotalMaaserGive}</h3>
-            {userDonations.map((donation) => {
-                const thisCharity = userFavCharities.find((fav_charity) => donation.fav_charity_id == fav_charity.id)
-                return (
-                    <div key={donation.id}>
-                        <h5>${donation.amount}</h5>
-                        <h6>Donated to {thisCharity.charity.name}</h6>
-                    </div>
-                )
-            })} */}
-            <div style={{width: 650}}>
+            <h3>Donated: ${userTotalDonations}</h3>
+            <div style={{margin: 'auto', width:'95%', height: 25}}>
                 <Line data={outcomeData}/>
             </div>
         </div>
