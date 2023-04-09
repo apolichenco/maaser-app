@@ -1,18 +1,18 @@
 import React, {useContext, useState, useEffect} from 'react';
 import { UserContext } from '../../context/user';
-import {Bar} from 'react-chartjs-2'
+import {Pie} from 'react-chartjs-2'
 import {Chart as ChartJS} from 'chart.js/auto'
 
 function CharityData() {
     
-    const {userTotalDonations, userTotalMaaserGive, userDonations, userFavCharities} = useContext(UserContext)
+    const {userTotalDonations, userTotalMaaserGive, userFavCharities} = useContext(UserContext)
 
     const [outcomeData, setOutcomeData] = useState({
         labels: userFavCharities.map((data) => 
             data.charity.name
         ),
         datasets: [{
-            label: "You Gave",
+            label: "You Gave $",
             data: userFavCharities.map((data) => data.total_gave_to_this_charity)
         }]
     })
@@ -31,8 +31,8 @@ function CharityData() {
                     </div>
                 )
             })} */}
-            <div style={{width: 700}}>
-                <Bar data={outcomeData}/>
+            <div style={{width: 600}}>
+                <Pie data={outcomeData}/>
             </div>
         </div>
     );

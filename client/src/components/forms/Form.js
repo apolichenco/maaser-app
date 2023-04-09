@@ -3,7 +3,7 @@ import { UserContext } from '../../context/user';
 
 function Form() {
 
-    const {user, userFavCharities, whenNewDonation, whenNewIncome} = useContext(UserContext)
+    const {user, userFavCharities, fetchMe} = useContext(UserContext)
 
     const monthsList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
@@ -46,7 +46,8 @@ function Form() {
         .then((r) => {
             if (r.ok) {
                 r.json().then((data) => {
-                    whenNewIncome(data)
+                    // whenNewIncome(data)
+                    fetchMe()
                 })
             }
             else {
@@ -75,7 +76,8 @@ function Form() {
             if (r.ok) {
                 r.json()
                 .then((data) => {
-                    whenNewDonation(data)
+                    // whenNewDonation(data)
+                    fetchMe()
                 })
             }
             else {

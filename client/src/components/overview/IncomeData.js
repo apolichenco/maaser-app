@@ -1,11 +1,11 @@
 import React, {useContext, useState, useEffect} from 'react';
 import { UserContext } from '../../context/user';
-import {Bar} from 'react-chartjs-2'
+import {Line} from 'react-chartjs-2'
 import {Chart as ChartJS} from 'chart.js/auto'
 
 function IncomeData() {
 
-    const {user, userTotalIncome, userIncomes} = useContext(UserContext)
+    const {user} = useContext(UserContext)
 
     const monthsList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
@@ -29,8 +29,8 @@ function IncomeData() {
                     </div>
                 )
             })}*/}
-            <div style={{width: 700}}> 
-                <Bar data={incomeData}/>
+            <div style={{width: 650}}> 
+                <Line data={incomeData}/>
             </div>
         </div>
     );
