@@ -12,16 +12,30 @@ function OutcomeData() {
     const [outcomeData, setOutcomeData] = useState({
         labels: monthsList.map((month) => month),
         datasets: [{
-            label: "You Gave $",
+            label: "You Gave",
             data: user.month_total_donations.map((data) => data)
         }]
     })
 
+    const options = {
+        scales: {
+            y: {
+                ticks: {
+                    // Include a dollar sign in the ticks
+                    callback: function(value, index, ticks) {
+                        return '$' + value;
+                    }
+                }
+            }
+        },
+        maintainAspectRatio: false
+    };
+
     return (
         <div>
-            <h3>Donated: ${userTotalDonations}</h3>
-            <div style={{margin: 'auto', width:'95%', height: 25}}>
-                <Line data={outcomeData}/>
+            <h3>Donated: {userTotalDonations}</h3>
+            <div >
+                <Line data={outcomeData} options={options} height={'470'}/>
             </div>
         </div>
     );

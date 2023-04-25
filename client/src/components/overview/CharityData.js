@@ -8,22 +8,32 @@ function CharityData() {
     const {userTotalDonations, userTotalMaaserGive, userFavCharities} = useContext(UserContext)
 
     const [outcomeData, setOutcomeData] = useState({
+        options: {
+            scales: {
+                y: {
+                    ticks: {
+                        // Include a dollar sign in the ticks
+                        callback: function(value, index, ticks) {
+                            return '$' + value;
+                        }
+                    }
+                }
+            }
+        },
         labels: userFavCharities.map((data) => 
             data.charity.name
         ),
         datasets: [{
-            label: "You Gave $",
+            label: "You Gave",
             data: userFavCharities.map((data) => data.total_gave_to_this_charity)
         }]
     })
 
-
     return (
         <div>
-            <h3>Donated: ${userTotalDonations}</h3>
-            <h3>Left to give: ${userTotalMaaserGive}</h3>
-            <div style={{margin: 'auto', width: 600}}>
-                <Pie data={outcomeData}/>
+            <h3>Donated: {userTotalDonations} Left to give: {userTotalMaaserGive}</h3>
+            <div>
+                <Pie data={outcomeData} options={{maintainAspectRatio: false}} height={'470'}/>
             </div>
         </div>
     );

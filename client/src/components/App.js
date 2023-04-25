@@ -1,6 +1,6 @@
 import React, {useContext, useState, useEffect} from 'react';
 import { Route, Switch } from "react-router-dom";
-import '../App.css';
+import './page.css';
 import Header from './header/Header';
 import Form from './forms/Form';
 import Account from './account-page/Account';

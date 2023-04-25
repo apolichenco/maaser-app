@@ -12,17 +12,31 @@ function IncomeData() {
     const [incomeData, setIncomeData] = useState({
         labels: monthsList.map((month) => month),
         datasets: [{
-            label: "You Made $",
+            label: "You Made",
             data: user.month_total_incomes.map((data) => data)
         }]
     })
 
+    const options = {
+        scales: {
+            y: {
+                ticks: {
+                    // Include a dollar sign in the ticks
+                    callback: function(value, index, ticks) {
+                        return '$' + value;
+                    }
+                }
+            }
+        },
+        maintainAspectRatio: false
+    };
+
 
     return (
         <div>
-            <h3>Total made: ${userTotalIncome}</h3>
-            <div style={{ margin: 'auto', width:'95%', height: 25}}> 
-                <Line data={incomeData}/>
+            <h3>Total made: {userTotalIncome}</h3>
+            <div> 
+                <Line data={incomeData} options={options} height={'470'}/>
             </div>
         </div>
     );

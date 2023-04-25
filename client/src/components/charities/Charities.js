@@ -21,8 +21,6 @@ function Charities() {
         })
     }, [])
 
-    // const favCharitiesIds = userFavCharities.map((favCharity) => favCharity.charity.id)
-
 
     return (
         <div>

@@ -10,12 +10,7 @@
     left: 0;
     overflow-x: hidden;
     padding-top: 20px;
-  
-  }
-  
-  .main {
-    margin-left: 195px;
-    text-align: center;
+    border-radius: 0px 50px 75px 0px;
   }
   
   .header-button {
@@ -59,14 +54,18 @@
   }
   
   .header {
-    padding: 1px;
-    text-align: center;
-    background: #1abc9c;
+    margin: 0px 5px 0px 152px;
+    background:#CF9FFF;
     /* height: 25px;  */
+    /* margin-left: 150px; */
+    border-radius: 15px 15px;
+    /* padding: 1px; */
+
   }
 
   .header-banner-font {
-    color: white;
+    /* padding: 1px; */
+    color: #7851a9;
     font-size: 25px;
     
   }

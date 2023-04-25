@@ -13,22 +13,34 @@ function GeneralLook() {
     const [allData, setaAllData] = useState({
         labels: monthsList.map((month) => month),
         datasets: [{
-            label: "You Made $",
+            label: "You Made",
             data: user.month_total_incomes.map((data) => data)
         },
         {
-            label: "You Gave $",
+            label: "You Gave",
             data: user.month_total_donations.map((data) => data)
         }]
     })
 
+    const options = {
+        scales: {
+            y: {
+                ticks: {
+                    // Include a dollar sign in the ticks
+                    callback: function(value, index, ticks) {
+                        return '$' + value;
+                    }
+                }
+            }
+        },
+        maintainAspectRatio: false
+    };
+
     return (
         <div>
-            <h3>Total made: ${userTotalIncome}</h3>
-            <h3>Donated: ${userTotalDonations}</h3>
-            <h3>Left to give: ${userTotalMaaserGive}</h3>
-            <div style={{margin: 'auto', width:'95%', height: 25}}>
-                <Bar data={allData}/>
+            <h3>Total made: <u>{userTotalIncome}</u> Donated: <u>{userTotalDonations}</u> Left to give: <u>{userTotalMaaserGive}</u></h3>
+            <div >
+                <Bar data={allData} options={options} height={'470'}/>
             </div>
         </div>
     );

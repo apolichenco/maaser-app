@@ -20,7 +20,7 @@ class User < ApplicationRecord
         income_total = 0
         if self.incomes
             self.incomes.map { |income| income_total += income.amount } 
-            sprintf('%.2f', income_total)
+            helper.number_to_currency(income_total)
         end
     end
 
@@ -28,7 +28,7 @@ class User < ApplicationRecord
         donations_total = 0
         if self.donations
             self.donations.map { |donation| donations_total += donation.amount } 
-            sprintf('%.2f', donations_total)
+            helper.number_to_currency(donations_total)
         end
     end
 
@@ -39,7 +39,7 @@ class User < ApplicationRecord
             donations_total = 0
             self.donations.map { |donation| donations_total += donation.amount } 
             to_give = (income_total * percentecise_it) - donations_total
-            sprintf('%.2f', to_give)
+            helper.number_to_currency(to_give)
         end
         
     end
@@ -70,6 +70,14 @@ class User < ApplicationRecord
             month_list_and_total.push(total)
         }
         month_list_and_total
+    end
+
+    private
+
+    def helper
+      @helper ||= Class.new do
+        include ActionView::Helpers::NumberHelper
+      end.new
     end
 
 

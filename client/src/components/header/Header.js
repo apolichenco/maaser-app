@@ -19,15 +19,15 @@ function Header() {
         <div>
             <div className='header'>
                 <h1 className='header-banner-font'>Charity Calculator <span className='calculator'>🖩</span></h1>
-
             </div>
             <div className='header-box'>
                 <u><h2>Menu</h2></u>
-                <NavLink to="../general">
                     <h4 className='header-button' onClick={homeDropdownChange}>Home</h4>
-                </NavLink>
                 {homeDropdown ? 
                     <div>
+                        <NavLink to="../general">
+                            <h6 className='header-button'>Overview</h6>
+                        </NavLink>
                         <NavLink to="../income-data">
                             <h6 className='header-button'>Income Data</h6>
                         </NavLink>
