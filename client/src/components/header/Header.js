@@ -18,7 +18,9 @@ function Header() {
     return (
         <div>
             <div className='header'>
-                <h1 className='header-banner-font'>Charity Calculator <span className='calculator'>🖩</span></h1>
+                <h1 className='header-banner-font'>Charity Calculator 
+                {/* <span className='calculator'>🖩</span> */}
+                </h1>
             </div>
             <div className='header-box'>
                 <u><h2>Menu</h2></u>

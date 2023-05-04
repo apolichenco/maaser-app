@@ -2,6 +2,7 @@ import React, {useContext, useState, useEffect} from 'react';
 import { Route, Switch } from "react-router-dom";
 import { UserContext } from '../../context/user';
 import SingleCharity from './SingleCharity';
+import './charity.css'
 
 function Charities() {
     const [charitiesList, setCharitiesList] = useState([])
@@ -26,10 +27,14 @@ function Charities() {
         <div>
             <Switch>
                 <Route path="/all-charities">
-                    {charitiesList.map((charity) => <SingleCharity key={charity.id} charityData={charity}/>)}
+                    <div className='container' >
+                        {charitiesList.map((charity) => <SingleCharity key={charity.id} charityData={charity}/>)}
+                    </div>
                 </Route>
                 <Route path="/my-saved-charities">
-                    {userFavCharities.map((charity) => <SingleCharity key={charity.charity.id} charityData={charity.charity}/>)}
+                    <div className='container'>
+                        {userFavCharities.map((charity) => <SingleCharity key={charity.charity.id} charityData={charity.charity}/>)}
+                    </div>
                 </Route>
             </Switch>
         </div>

@@ -1,5 +1,6 @@
 import React, {useContext, useState, useEffect} from 'react';
 import { UserContext } from '../../context/user';
+import './charity.css'
 
 function SingleCharity({charityData}) {
 
@@ -59,12 +60,15 @@ function SingleCharity({charityData}) {
         
 
     return (
-        <div  key={charityData.id}>
-            <h4>{charityData.name}</h4>
-            <a href={charityData.link} target="_blank">Donate to {charityData.name}</a>
-            <br></br>
-            {likedOrNot ? <button onClick={favoriteACharity}>Like</button> : <button onClick={deleteFavCharity}>Remove off my list</button>}
+        <div className='single-charity'>
+            <div className='text-container'>
+                <h4 className='charity-name'>{charityData.name}</h4>
+                <a href={charityData.link} target="_blank" className='charity-link'>Donate Here</a>
+                <br></br>
+                {likedOrNot ? <button onClick={favoriteACharity} className='charity-button'>Like</button> : <button onClick={deleteFavCharity} className='charity-button'>Remove off my list</button>}
+            </div>            
         </div>
+
     );
 
 }

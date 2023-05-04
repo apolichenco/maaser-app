@@ -1,0 +1,29 @@
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 10px 20px; 
+}
+
+.single-charity {
+    color: blue;
+    width: 225px;
+    height: 150px;
+    border: 5px solid #555;
+    border-radius: 5px;
+  }
+
+ .charity-name {
+    margin-top: 15px; 
+}
+
+  .charity-link {
+    margin-top: 25px; 
+}
+
+ .charity-button {
+    margin-top: 25px;
+    color: blueviolet;
+ }
