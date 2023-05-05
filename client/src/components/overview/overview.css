@@ -1,0 +1,17 @@
+.three-summary {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-bottom: 15px;
+    border-bottom: 2.5px dotted black;
+}
+
+.three-summary h3 {
+    height: 0px;
+}
+
+.summary {
+    padding-bottom: 15px;
+    border-bottom: 2.5px dotted black;
+}

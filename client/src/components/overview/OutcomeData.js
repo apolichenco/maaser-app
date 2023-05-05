@@ -33,7 +33,7 @@ function OutcomeData() {
 
     return (
         <div>
-            <h3>Donated: {userTotalDonations}</h3>
+            <h3 className='summary'>Donated: {userTotalDonations}</h3>
             <div >
                 <Line data={outcomeData} options={options} height={'470'}/>
             </div>

@@ -3,9 +3,8 @@ import CharityData from './CharityData';
 import GeneralLook from './GeneralLook';
 import IncomeData from './IncomeData';
 import OutcomeData from './OutcomeData';
-import { UserContext } from '../../context/user';
 import { Route, Switch, NavLink } from "react-router-dom";
-
+import './overview.css'
 
 function HomePage() {
 

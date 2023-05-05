@@ -1,15 +1,14 @@
 .header-box {
     background-color: #f1f1f1;
-    /* overflow: auto; Enable scrolling if the sidenav has too much content */
+    /*Enable scrolling if the sidenav has too much content */
+    /* overflow: auto;  */
     border: 1px solid #555;
     border-radius: 0px 10px 10px 0px;
     height: 100%;
     width: 21%;
-    position: absolute;
-    z-index: 1;
+    position: fixed;
     top: 0;
     left: 0;
-    overflow-x: hidden;
     padding-top: 20px;
   }
   
@@ -17,8 +16,6 @@
     display: block;
     color: #000;
     padding: 8px 16px;
-    /* text-align: center;*/
-    /* border-bottom: 1px solid #555;  */
   }
   
   .header-box a {
@@ -45,13 +42,6 @@
     background-color: rgb(98, 98, 248);
     color: white;
   }
-  
-  /* .three-lines {
-    width: 35px;
-    height: 5px;
-    background-color: black;
-    margin: 6px 0;
-  } */
   
   .header {
     display: flex;

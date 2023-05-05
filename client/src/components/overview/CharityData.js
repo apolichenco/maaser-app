@@ -31,7 +31,7 @@ function CharityData() {
 
     return (
         <div>
-            <h3>Donated: {userTotalDonations} Left to give: {userTotalMaaserGive}</h3>
+            <h3 className='summary'>Donated: {userTotalDonations} Left to give: {userTotalMaaserGive}</h3>
             <div>
                 <Pie data={outcomeData} options={{maintainAspectRatio: false}} height={'470'}/>
             </div>

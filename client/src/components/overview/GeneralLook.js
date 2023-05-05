@@ -38,7 +38,11 @@ function GeneralLook() {
 
     return (
         <div>
-            <h3>Total made: <u>{userTotalIncome}</u> Donated: <u>{userTotalDonations}</u> Left to give: <u>{userTotalMaaserGive}</u></h3>
+            <div className='three-summary'>
+                <h3>Total made: {userTotalIncome}</h3>
+                <h3> Donated: {userTotalDonations}</h3>
+                <h3>Left to give: {userTotalMaaserGive}</h3>
+            </div>
             <div >
                 <Bar data={allData} options={options} height={'470'}/>
             </div>

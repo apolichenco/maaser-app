@@ -34,7 +34,7 @@ function IncomeData() {
 
     return (
         <div>
-            <h3>Total made: {userTotalIncome}</h3>
+            <h3 className='summary'>Total made: {userTotalIncome}</h3>
             <div> 
                 <Line data={incomeData} options={options} height={'470'}/>
             </div>
