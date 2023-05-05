@@ -22,7 +22,7 @@ function Form() {
  
     return (
         <div>
-            <header className='form-buttons'>
+            <header className='form-header'>
                 <button onClick={(e) => setWhichForm("Income")}>New Income</button>
                 <button onClick={(e) => setWhichForm("Donation")}>New Donation</button>
                 <button onClick={(e) => setWhichForm("Charity")}>New Charity</button>

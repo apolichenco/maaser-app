@@ -1,6 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {useHistory} from "react-router-dom"
 import { UserContext } from '../../context/user';
+import './account.css'
 
 function SignIn() {
     const [name, setName] = useState("")
@@ -14,7 +15,7 @@ function SignIn() {
     let history = useHistory();
 
     function redirectToHome() {
-        history.push('/general')
+        history.push('/')
     }
 
     let allErrors = []
@@ -78,7 +79,7 @@ function SignIn() {
     }
 
     const signingUp =  <div>
-            <h3>Already a user? Press <button onClick={(e) => setTypeOfLogIn(false)}>Log In</button></h3>
+            <h3>Already a user? Press <button className='change-page-button' onClick={(e) => setTypeOfLogIn(false)}>Log In</button></h3>
             <form onSubmit={handleSignUp}>
                 <label>Username:</label><br></br>
                 <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} ></input><br></br>
@@ -91,7 +92,7 @@ function SignIn() {
         </div>
 
     const loggingIn = <div>
-            <h3>New user? Press <button onClick={(e) => setTypeOfLogIn(true)}>Sign Up</button></h3>
+            <h3>New user? Press <button className='change-page-button' onClick={(e) => setTypeOfLogIn(true)}>Sign Up</button></h3>
             <form onSubmit={handleLogIn}>
                 <label>Username:</label><br></br>
                 <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} ></input><br></br>
@@ -103,7 +104,7 @@ function SignIn() {
         </div>
 
     return (
-        <div>
+        <div className='login-box'>
             {typeOfLogIn ? signingUp : loggingIn}
         </div>
     )

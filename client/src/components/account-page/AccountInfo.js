@@ -1,5 +1,6 @@
 import React, {useContext, useState, useEffect} from 'react';
 import { UserContext } from '../../context/user';
+import './account.css'
 
 
 function AccountInfo() {
@@ -47,26 +48,26 @@ function AccountInfo() {
         })
     }
 
-    const editingHtml = <div>
-            <form onSubmit={handleSubmit}> 
+    const editingHtml = <div className='editing'>
+            <h5>Maaser Percentage:</h5><form onSubmit={handleSubmit}> 
                 <input type="text" name="percentage" value={editedPercentage} onChange={(e) => setEditedPercentage(e.target.value)}/>
                 <input type="submit" value="Save"/>
             </form>
         </div>
 
     return (
-        <div>
-            <h5>Name: {user.name}</h5>
+        <div className='account-box'>
+            <h5>Name: <h6>{user.name}</h6></h5>
             <div>   
-                {editingStatus ? <h5>Maaser Percentage: {editedPercentage}% 
-                    <button onClick={handleEdit}>
+                {editingStatus ? <h5>Maaser Percentage: <h6>{editedPercentage}%
+                    <button onClick={handleEdit} className='emoji-button'>
                         <span>✏️</span>
                     </button>
-                </h5>  : editingHtml }       
+                </h6></h5>  : editingHtml }       
                 
             </div>
  
-            <button onClick={deleteUser} style={{margin: 15}}>Log Out</button>
+            <button onClick={deleteUser} className='log-out-button'>Log Out</button>
         </div>
     );
 

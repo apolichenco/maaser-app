@@ -1,18 +1,28 @@
 import React, {useState,} from 'react';
 import {NavLink} from "react-router-dom"
 import './header.css'
+import Account from '../account-page/Account';
 
 function Header() {
 
     const [charityDropdown, setCharityDropdown] = useState(false)
     const [homeDropdown, setHomeDropdown] = useState(false)
+    const [accountDropdown, setAccountDropdown] = useState(false)
 
     function charityDropdownChange() {
         setCharityDropdown(!charityDropdown)
+        setAccountDropdown(false)
     }
 
     function homeDropdownChange() {
         setHomeDropdown(!homeDropdown)
+        setAccountDropdown(false)
+    }
+
+    function accountDropdownChange() {
+        setAccountDropdown(!accountDropdown)
+        setCharityDropdown(false)
+        setHomeDropdown(false)
     }
 
     return (
@@ -27,7 +37,7 @@ function Header() {
                     <h4 className='header-button' onClick={homeDropdownChange}>Home</h4>
                 {homeDropdown ? 
                     <div>
-                        <NavLink to="../general">
+                        <NavLink to="../">
                             <h6 className='header-button'>Overview</h6>
                         </NavLink>
                         <NavLink to="../income-data">
@@ -55,9 +65,9 @@ function Header() {
                 <NavLink to="../forms">
                     <h4 className='header-button'>New Give/Income</h4> 
                 </NavLink>
-                <NavLink to="../">
-                    <h4 className='header-button'>Account</h4>   
-                </NavLink>
+
+                <h4 className='header-button' onClick={accountDropdownChange}>Account</h4>
+                {accountDropdown ? <Account/> : null}
             </div>
         </div>
 

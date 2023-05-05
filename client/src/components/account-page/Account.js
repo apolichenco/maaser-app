@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
-import SignIn from './SignIn';
 import AccountInfo from './AccountInfo';
 import { UserContext } from '../../context/user';
+import './account.css'
 
 function Account() {
 
@@ -9,7 +9,7 @@ function Account() {
 
     return (
         <div>
-        {user ? <AccountInfo />  : <SignIn />}
+        {user ? <AccountInfo />  : null}
         </div>
     );
 

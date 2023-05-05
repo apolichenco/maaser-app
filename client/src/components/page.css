@@ -1,12 +1,14 @@
-/* .page {
-} */
-
 html {
     background-color: rgb(200, 225, 250)
 }
 
 .main {
-    margin-left: 147px;
+    margin-left: 12%;
     text-align: center;
   }
 
+  @media screen and (min-width: 850px) {
+    .main {
+      margin-left: 95px;
+    }
+  }

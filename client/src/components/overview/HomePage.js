@@ -12,7 +12,7 @@ function HomePage() {
     return (
         <div>
             <Switch>
-                <Route path="/general">
+                <Route exact path="/">
                     <GeneralLook />
                 </Route>
                 <Route path="/income-data">
