@@ -11,9 +11,24 @@
 .single-charity {
     color: blue;
     width: 225px;
-    height: 150px;
+    height: 167px;
     border: 5px solid #555;
     border-radius: 5px;
+  }
+
+  .charity-name {
+    margin-top: 15px;
+    margin-bottom: 40px;
+    text-decoration: underline;
+    height: 20px;
+    font-size: 3vw
+  }
+
+  .single-charity a {
+    color: coral;
+    font-size: 15px;
+    font-style: italic;
+    text-decoration: none;
   }
 
  .charity-button-like {
@@ -21,16 +36,17 @@
     width: auto;
     margin: auto;
     font-size: 20px;
-    background-color: rgb(250, 250, 250);
+    background-color: rgb(225, 225, 250);
     border: 1px solid #555;
     }
 
 .charity-button-unlike {
-    color: blueviolet;
+    color: purple;
     width: 100px;
     margin: auto;
-    background-color: rgb(250, 250, 250);
+    background-color: rgb(225, 225, 250);
     border: 1px solid #555;
+    text-shadow:  1px 1px white;
     }
 
  .text-container {
@@ -38,5 +54,5 @@
     justify-content: space-evenly;
     align-content: center;
     flex-direction: column;
-
+    flex-wrap: wrap;
  }

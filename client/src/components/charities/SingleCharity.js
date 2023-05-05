@@ -63,7 +63,7 @@ function SingleCharity({charityData}) {
         <div className='single-charity'>
             <div className='text-container'>
                 <h4 className='charity-name'>{charityData.name}</h4>
-                <a href={charityData.link} target="_blank" className='charity-link'>Donate Here</a>
+                <a href={charityData.link} target="_blank" className='charity-link'>Click Here To Donate</a>
                 <br></br>
                 {likedOrNot ? <button onClick={favoriteACharity} className='charity-button-like'>❤</button> : <button onClick={deleteFavCharity} className='charity-button-unlike'>Remove off my list</button>}
             </div>            
