@@ -32,8 +32,6 @@
     border-radius: 5px;
     border-image: linear-gradient(135deg, rgb(100, 100, 255), rgb(200, 225, 250), rgb(100, 100, 255));
     border-image-slice: 1;
-
-    /* border:  solid (); */
     margin-top: 10px;
     height: 40px;
     width: 100px;
@@ -45,21 +43,22 @@
 }
 
 .form-header {
-    margin: 10px 10px 0px 10px;
-    background-color: rgb(120, 120, 255);
+    height: 50px;
+    margin: -15px 5px 0px -7px;    /* rgb(120, 120, 255); */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
     gap: 10px 20px; 
     padding-bottom: 10px;
-    border: 5px solid rgb(100, 100, 255);
-    border-radius: 10px;
-    
+    /* border: 5px solid rgb(100, 100, 255); */
+    border-radius: 0px 0px 10px 10px; 
+    background-image: linear-gradient(rgb(175, 100, 235), rgb(227, 204, 245));
+    /* background-image-slice: 1;    */
 }
 
 .form-header button {
-    font-size: 15px;
+    font-size: 12px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: bold;
     /* text-shadow:  1px 1px black; */
@@ -68,8 +67,8 @@
     border: 2px solid black;
     /* rgb(140, 140, 255); */
     color: black;
-    margin-top: 10px;
-    height: 40px;
+    margin-top: 20px;
+    height: 30px;
 }
 
 .forms input[id=text] {
