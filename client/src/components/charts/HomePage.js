@@ -3,7 +3,7 @@ import CharityData from './CharityData';
 import GeneralLook from './GeneralLook';
 import IncomeData from './IncomeData';
 import OutcomeData from './OutcomeData';
-import { Route, Switch, NavLink } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import './overview.css'
 
 function HomePage() {

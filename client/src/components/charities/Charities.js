@@ -39,10 +39,12 @@ function Charities() {
                     </div>
                 </Route>
                 <Route path="/my-saved-charities">
-                    <NavLink to="../all-charities">
-                        <button>Add new charities from our list</button>
-                    </NavLink>
-                    <button onClick={goToNewCharity}>Add your own charity</button>
+                    <div className='charity-header'>
+                        <NavLink to="../all-charities">
+                            <button className='charity-header-buttons'>Add new charities from our list</button>
+                        </NavLink>
+                    <button className='charity-header-buttons' onClick={goToNewCharity}>Add your own charity</button>
+                    </div>
                     <div className='container'>
                         {userFavCharities.map((charity) => <SingleCharity key={charity.charity.id} charityData={charity.charity}/>)}
                     </div>
