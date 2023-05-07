@@ -1,5 +1,5 @@
 import React, {useContext, useState, useEffect} from 'react';
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, NavLink } from "react-router-dom";
 import { UserContext } from '../../context/user';
 import SingleCharity from './SingleCharity';
 import {useHistory} from "react-router-dom"
@@ -39,7 +39,9 @@ function Charities() {
                     </div>
                 </Route>
                 <Route path="/my-saved-charities">
-                    <button>Add new charities from our list</button>
+                    <NavLink to="../all-charities">
+                        <button>Add new charities from our list</button>
+                    </NavLink>
                     <button onClick={goToNewCharity}>Add your own charity</button>
                     <div className='container'>
                         {userFavCharities.map((charity) => <SingleCharity key={charity.charity.id} charityData={charity.charity}/>)}

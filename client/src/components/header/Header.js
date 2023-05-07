@@ -34,7 +34,7 @@ function Header() {
             </div>
             <div className='header-box'>
                 <u><h2>Menu</h2></u>
-                    <h4 className='header-button' onClick={homeDropdownChange}>Home</h4>
+                    <h4 className='header-button' onClick={homeDropdownChange}>Charts</h4>
                 {homeDropdown ? 
                     <div>
                         <NavLink to="../">
@@ -51,17 +51,14 @@ function Header() {
                         </NavLink>
                     </div> : null
                 }
-                <h4 className='header-button' onClick={charityDropdownChange}>Charities</h4>
+                {/* <h4 className='header-button' onClick={charityDropdownChange}>Charities</h4>
                 {charityDropdown ? 
-                    <div>
-                        <NavLink to="../all-charities">
-                        <h6 className='header-button'>All Charities</h6>
-                        </NavLink>
+                    <div> */}
                         <NavLink to="../my-saved-charities">
-                            <h6 className='header-button'>My Charities</h6>
+                            <h4 className='header-button'>My Charities</h4>
                         </NavLink>
-                    </div> : null
-                }
+                    {/* </div> : null
+                } */}
                 <NavLink to="../forms">
                     <h4 className='header-button'>New Give/Income</h4> 
                 </NavLink>

@@ -13,7 +13,7 @@
     width: 225px;
     height: 167px;
     border: 5px solid #555;
-    border-radius: 5px;
+    border-radius: 10px;
   }
 
   .charity-name {
@@ -35,17 +35,19 @@
     width: auto;
     margin: auto;
     font-size: 20px;
-    background-color: rgb(225, 225, 250);
-    border: 1px solid #555;
+    background-color: rgb(200, 225, 250);
+    /* border: 1px solid #555; */
+    border-radius: 25px;
     }
 
 .charity-button-unlike {
     color: purple;
     width: 100px;
     margin: auto;
-    background-color: rgb(225, 225, 250);
+    background-color: rgb(235, 235, 250);
     border: 1px solid #555;
     text-shadow:  1px 1px white;
+    border-radius: 10px;
     }
 
  .text-container {
