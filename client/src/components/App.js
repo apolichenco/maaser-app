@@ -4,7 +4,7 @@ import './page.css';
 import Header from './header/Header';
 import Form from './forms/Form';
 import SignIn from './account-page/SignIn';
-import HomePage from './overview/HomePage';
+import HomePage from './charts/HomePage';
 import Charities from './charities/Charities'
 import { UserContext } from '../context/user';
 

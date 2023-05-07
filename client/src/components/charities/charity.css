@@ -19,16 +19,15 @@
   .charity-name {
     margin-top: 15px;
     margin-bottom: 40px;
-    text-decoration: underline;
-    height: 20px;
-    font-size: 3vw
+    height: 25px;
+    font-size: 140%;
   }
 
   .single-charity a {
     color: coral;
     font-size: 15px;
     font-style: italic;
-    text-decoration: none;
+    font-weight: bold;
   }
 
  .charity-button-like {

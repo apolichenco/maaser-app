@@ -10,15 +10,15 @@ function GeneralLook() {
 
     const monthsList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-    const [allData, setaAllData] = useState({
+    const [allData, setAllData] = useState({
         labels: monthsList.map((month) => month),
         datasets: [{
             label: "You Made",
             data: user.month_total_incomes.map((data) => data)
         },
         {
-            label: "You Gave",
-            data: user.month_total_donations.map((data) => data)
+            label: "You Charity Equals To",
+            data: user.month_total_donations.map((data) => data * 10)
         }]
     })
 
