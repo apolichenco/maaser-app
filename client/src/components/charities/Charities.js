@@ -25,8 +25,21 @@ function Charities() {
         })
     }, [])
 
+    function removedCharity(error) {
+        setErrors(error)
+        setTimeout(function () {
+            setErrors([]);
+        }, 5000);
+    }
+
     function goToNewCharity() {
         history.push('../forms/new-charity')
+    }
+
+    let allFavCharities
+
+    if (userFavCharities) {
+        allFavCharities = userFavCharities.map((charity) => <SingleCharity key={charity.charity.id} charityData={charity.charity} setErrors={removedCharity}/>)
     }
 
     return (
@@ -35,7 +48,7 @@ function Charities() {
             <Switch>            
                 <Route path="/all-charities">
                     <div className='container' >
-                        {charitiesList.map((charity) => <SingleCharity key={charity.id} charityData={charity}/>)}
+                        {charitiesList.map((charity) => <SingleCharity key={charity.id} charityData={charity} setErrors={removedCharity}/>)}
                     </div>
                 </Route>
                 <Route path="/my-saved-charities">
@@ -46,7 +59,7 @@ function Charities() {
                     <button className='charity-header-buttons' onClick={goToNewCharity}>Add your own charity</button>
                     </div>
                     <div className='container'>
-                        {userFavCharities.map((charity) => <SingleCharity key={charity.charity.id} charityData={charity.charity}/>)}
+                        {allFavCharities}
                     </div>
                 </Route>
             </Switch>

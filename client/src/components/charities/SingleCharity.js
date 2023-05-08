@@ -2,12 +2,13 @@ import React, {useContext, useState, useEffect} from 'react';
 import { UserContext } from '../../context/user';
 import './charity.css'
 
-function SingleCharity({charityData}) {
+function SingleCharity({charityData, setErrors}) {
 
     const {user, addFavCharity, removeFavCharity, userFavCharities} = useContext(UserContext)
 
     const [likedOrNot, setLikedOrNot] = useState(false)
     const [favCharityId, setFavCharityId] = useState([])
+    // const [errors, setErrors] = useState([])
 
 
     useEffect(() => {
@@ -38,10 +39,11 @@ function SingleCharity({charityData}) {
                     r.json().then((data) => {
                         addFavCharity(data)
                         setLikedOrNot(false)
+                        setErrors([])
                     })
                 }
                 else {
-                    r.json().then((err) => console.log(err))
+                    r.json().then((err) => setErrors(err.errors))
                 }
             })
         }
@@ -51,9 +53,10 @@ function SingleCharity({charityData}) {
             .then((r) => { if (r.ok) {
                     removeFavCharity(favCharityId[0].id)
                     setLikedOrNot(!likedOrNot)
+                    setErrors([])
             }
             else {
-                r.json().then((err) => console.log(err.errors))
+                r.json().then((err) => setErrors(err.errors))
             }
         })
     }
@@ -66,7 +69,7 @@ function SingleCharity({charityData}) {
                 <a href={charityData.link} target="_blank" className='charity-link'>Click Here To Donate</a>
                 <br></br>
                 {likedOrNot ? <button onClick={favoriteACharity} className='charity-button-like'>❤</button> : <button onClick={deleteFavCharity} className='charity-button-unlike'>Remove off my list</button>}
-            </div>            
+            </div>  
         </div>
 
     );

@@ -5,14 +5,8 @@ import Account from '../account-page/Account';
 
 function Header() {
 
-    const [charityDropdown, setCharityDropdown] = useState(false)
     const [homeDropdown, setHomeDropdown] = useState(false)
     const [accountDropdown, setAccountDropdown] = useState(false)
-
-    function charityDropdownChange() {
-        setCharityDropdown(!charityDropdown)
-        setAccountDropdown(false)
-    }
 
     function homeDropdownChange() {
         setHomeDropdown(!homeDropdown)
@@ -21,7 +15,6 @@ function Header() {
 
     function accountDropdownChange() {
         setAccountDropdown(!accountDropdown)
-        setCharityDropdown(false)
         setHomeDropdown(false)
     }
 
@@ -41,13 +34,13 @@ function Header() {
                             <h6 className='header-button'>Overview</h6>
                         </NavLink>
                         <NavLink to="../income-data">
-                            <h6 className='header-button'>Income Data</h6>
+                            <h6 className='header-button'>Income Chart</h6>
                         </NavLink>
                         <NavLink to="../donations-data">
-                            <h6 className='header-button'>Donations Data</h6>
+                            <h6 className='header-button'>Donations Chart</h6>
                         </NavLink>
                         <NavLink to="../charities-data">
-                            <h6 className='header-button'>Charity Data</h6>
+                            <h6 className='header-button'>Charity Chart</h6>
                         </NavLink>
                     </div> : null
                 }

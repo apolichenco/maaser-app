@@ -47,7 +47,7 @@ function SignIn() {
         .then((r) => {
             if (r.ok) {
                 r.json().then((data) => {
-                    redirectToHome()
+                    history.push('/forms')
                     setUser(data)
                     setErrors([])
                 })
@@ -71,7 +71,7 @@ function SignIn() {
             if (r.ok) {     
                 r.json()
                 .then((data) => {
-                    redirectToHome()
+                    history.push('/')
                     setAllData(data)
                     setErrors([])
                  })
