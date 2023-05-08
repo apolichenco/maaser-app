@@ -50,6 +50,7 @@ function Charities() {
                     </div>
                 </Route>
             </Switch>
+            {errors.length > 0 ?  <div className='error-message'><h5>{errors}</h5></div> : null }  
         </div>
     );
 

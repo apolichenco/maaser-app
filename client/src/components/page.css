@@ -12,3 +12,18 @@ html {
       margin-left: 95px;
     }
   }
+
+  .error-message {
+    border: 1px solid red;
+    color: red;
+    text-align: center;
+    margin: auto;
+    width: 250px;
+    height: auto;
+    margin-top: 2px;
+  }
+
+  .error-message h5 {
+    height: 10px;
+    margin-top: 7px;
+  }

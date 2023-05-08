@@ -43,7 +43,7 @@ function AccountInfo() {
                 })
             }
             else {
-                r.json().then((err) => console.log(err.errors))
+                r.json().then((err) => setErrors(err.errors))
             }
         })
     }
@@ -68,6 +68,7 @@ function AccountInfo() {
             </div>
  
             <button onClick={deleteUser} className='log-out-button'>Log Out</button>
+            {errors.length > 0 ?  <div className='error-message'><h5>{errors}</h5></div> : null }  
         </div>
     );
 

@@ -7,7 +7,7 @@ function SignIn() {
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
     const [percentage, setPercentage] = useState(10)
-    const [errors, setErrors] = useState()
+    const [errors, setErrors] = useState([])
     const [typeOfLogIn, setTypeOfLogIn] = useState(false)
 
     const {setAllData, setUser} = useContext(UserContext)
@@ -24,6 +24,11 @@ function SignIn() {
             return (<h5 key={index}>{err}</h5>)
         })
     }
+    
+    function switchBetweenLogins() {
+        setTypeOfLogIn(!typeOfLogIn)
+        setErrors([])
+    }
 
     function handleSignUp(e) {
         e.preventDefault()
@@ -32,7 +37,6 @@ function SignIn() {
             password: password,
             percentage: percentage
         }
-        console.log({name, password, percentage})
         fetch("/signup", {
             method:"POST",
             headers: {
@@ -45,11 +49,11 @@ function SignIn() {
                 r.json().then((data) => {
                     redirectToHome()
                     setUser(data)
-                    setErrors(["You are logged in!"])
+                    setErrors([])
                 })
             }
             else {
-                r.json().then((err) => console.log(err.errors))
+                r.json().then((err) => setErrors(err.errors))
             }
         })
     }
@@ -69,17 +73,17 @@ function SignIn() {
                 .then((data) => {
                     redirectToHome()
                     setAllData(data)
-                    setErrors(["You are logged in!"])
+                    setErrors([])
                  })
             }
             else {
-                r.json().then((err) => console.log(err.errors))
+                r.json().then((err) => setErrors(err.errors))
             }
         })
     }
 
     const signingUp =  <div>
-            <h3>Already a user? Press <button className='change-page-button' onClick={(e) => setTypeOfLogIn(false)}>Log In</button></h3>
+            <h3>Already a user? Press <button className='change-page-button' onClick={switchBetweenLogins}>Log In</button></h3>
             <form onSubmit={handleSignUp}>
                 <label>Username:</label><br></br>
                 <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} ></input><br></br>
@@ -92,21 +96,24 @@ function SignIn() {
         </div>
 
     const loggingIn = <div>
-            <h3>New user? Press <button className='change-page-button' onClick={(e) => setTypeOfLogIn(true)}>Sign Up</button></h3>
+            <h3>New user? Press <button className='change-page-button' onClick={switchBetweenLogins}>Sign Up</button></h3>
             <form onSubmit={handleLogIn}>
                 <label>Username:</label><br></br>
                 <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} ></input><br></br>
                 <label>Password:</label><br></br>
                 <input type="text" id="password" value={password} onChange={(e) => setPassword(e.target.value)} ></input><br></br>
                 <button type="submit">Log In</button>
-                {allErrors}
             </form>
         </div>
 
     return (
-        <div className='login-box'>
-            {typeOfLogIn ? signingUp : loggingIn}
+        <div>
+            <div className='login-box'>
+                {typeOfLogIn ? signingUp : loggingIn}
+            </div>  
+            {errors.length > 0 ?  <div className='error-message'>{allErrors}</div> : null }  
         </div>
+
     )
 
 

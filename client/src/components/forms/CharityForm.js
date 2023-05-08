@@ -7,6 +7,15 @@ function CharityForm() {
 
     const [newCharityName, setNewCharityName] = useState("")
     const [newCharityLink, setNewCharityLink] = useState("")
+    const [errors, setErrors] = useState([])
+
+    let allErrors = []
+    if (errors) {
+        allErrors = errors.map((err, index) => {
+            return (<h5 key={index}>{err}</h5>)
+        })
+    }
+
 
     function fetchForNewCharity(e) {
         e.preventDefault()
@@ -25,10 +34,11 @@ function CharityForm() {
             if (r.ok) {
                 r.json().then((data) => {
                     console.log(data)
+                    setErrors([])
                 })
             }
             else {
-                r.json().then((err) => console.log(err))
+                r.json().then((err) => setErrors(err.errors))
             }
         })
     }
@@ -46,6 +56,7 @@ function CharityForm() {
                     <br></br>
                 <button type="submit">Submit</button>
             </form>
+            {errors.length > 0 ?  <div className='error-message'>{allErrors}</div> : null }  
         </div>
     )
 

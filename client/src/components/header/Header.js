@@ -51,16 +51,11 @@ function Header() {
                         </NavLink>
                     </div> : null
                 }
-                {/* <h4 className='header-button' onClick={charityDropdownChange}>Charities</h4>
-                {charityDropdown ? 
-                    <div> */}
-                        <NavLink to="../my-saved-charities">
-                            <h4 className='header-button'>My Charities</h4>
-                        </NavLink>
-                    {/* </div> : null
-                } */}
+                <NavLink to="../my-saved-charities">
+                    <h4 className='header-button'>My Charities</h4>
+                </NavLink>
                 <NavLink to="../forms">
-                    <h4 className='header-button'>New Give/Income</h4> 
+                    <h4 className='header-button'>New Activity</h4> 
                 </NavLink>
 
                 <h4 className='header-button' onClick={accountDropdownChange}>Account</h4>

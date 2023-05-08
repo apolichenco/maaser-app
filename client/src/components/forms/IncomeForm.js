@@ -11,6 +11,14 @@ function IncomeForm() {
     const [newIncomeAmount, setNewIncomeAmount] = useState("")
     const [incomeMonth, setIncomeMonth] = useState(monthsList[0])
     const [incomeYear, setIncomeYear] = useState(2023)
+    const [errors, setErrors] = useState([])
+
+    let allErrors = []
+    if (errors) {
+        allErrors = errors.map((err, index) => {
+            return (<h5 key={index}>{err}</h5>)
+        })
+    }
 
 
     function fetchForNewIncome(e) {
@@ -32,10 +40,11 @@ function IncomeForm() {
             if (r.ok) {
                 r.json().then((data) => {
                     fetchMe()
+                    setErrors([])
                 })
             }
             else {
-                r.json().then((err) => console.log(err))
+                r.json().then((err) => setErrors(err.errors))
             }
         })
     }
@@ -56,9 +65,9 @@ function IncomeForm() {
                 <label>Year:</label>
                 <input type="text" id="price" value={incomeYear} onChange={(e) => setIncomeYear(e.target.value)}></input>
                     <br></br>
-
                 <button type="submit">Submit</button>
             </form>
+            {errors.length > 0 ?  <div className='error-message'>{allErrors}</div> : null }  
         </div>
     )
 

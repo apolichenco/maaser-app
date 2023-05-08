@@ -13,6 +13,8 @@ function DonationForm() {
     const [donationFavCharityId, setDonationFavCharityId] = useState("")
     const [donationMonth, setDonationMonth] = useState(monthsList[0])
     const [donationYear, setDonationYear] = useState(2023)
+    const [errors, setErrors] = useState([])
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -20,6 +22,13 @@ function DonationForm() {
         }
         fetchData()
       }, [])
+
+      let allErrors = []
+      if (errors) {
+          allErrors = errors.map((err, index) => {
+              return (<h5 key={index}>{err}</h5>)
+          })
+      }
 
     function fetchForNewDonation(e) {
         e.preventDefault()
@@ -42,10 +51,11 @@ function DonationForm() {
                 r.json()
                 .then((data) => {
                     fetchMe()
+                    setErrors([])
                 })
             }
             else {
-                r.json().then((err) => console.log(err.errors))
+                r.json().then((err) => setErrors(err.errors))
             }
         })
     }
@@ -73,6 +83,7 @@ function DonationForm() {
                     <br></br>
                 <button type="submit">Submit</button>
             </form>
+            {errors.length > 0 ?  <div className='error-message'>{allErrors}</div> : null }  
         </div>
     )
 
