@@ -8,7 +8,6 @@ function SingleCharity({charityData, setErrors}) {
 
     const [likedOrNot, setLikedOrNot] = useState(false)
     const [favCharityId, setFavCharityId] = useState([])
-    // const [errors, setErrors] = useState([])
 
 
     useEffect(() => {

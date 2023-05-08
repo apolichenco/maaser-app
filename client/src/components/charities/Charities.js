@@ -1,34 +1,22 @@
 import React, {useContext, useState, useEffect} from 'react';
 import { Route, Switch, NavLink } from "react-router-dom";
 import { UserContext } from '../../context/user';
+import { CharityContext } from '../../context/charities';
 import SingleCharity from './SingleCharity';
 import {useHistory} from "react-router-dom"
 import './charity.css'
 
 function Charities() {
-    const [charitiesList, setCharitiesList] = useState([])
-    const [errors, setErrors] = useState([])
 
     const {userFavCharities} = useContext(UserContext)
+    const {charitiesList, charityErrors, setCharityErrors} = useContext(CharityContext)
 
     let history = useHistory();
 
-    useEffect(() => {
-        fetch("/charities")
-        .then((r) => {
-            if (r.ok) {
-                r.json().then((data) => setCharitiesList(data))
-            }
-            else {
-                r.json().then((err) => setErrors(err.errors))
-            }
-        })
-    }, [])
-
     function removedCharity(error) {
-        setErrors(error)
+        setCharityErrors(error)
         setTimeout(function () {
-            setErrors([]);
+            setCharityErrors([]);
         }, 5000);
     }
 
@@ -63,7 +51,7 @@ function Charities() {
                     </div>
                 </Route>
             </Switch>
-            {errors.length > 0 ?  <div className='error-message'><h5>{errors}</h5></div> : null }  
+            {charityErrors.length > 0 ?  <div className='error-message'><h5>{charityErrors}</h5></div> : null }  
         </div>
     );
 

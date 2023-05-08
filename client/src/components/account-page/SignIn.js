@@ -14,10 +14,6 @@ function SignIn() {
 
     let history = useHistory();
 
-    function redirectToHome() {
-        history.push('/')
-    }
-
     let allErrors = []
     if (errors) {
         allErrors = errors.map((err, index) => {

@@ -9,9 +9,17 @@ function IncomeForm() {
     const monthsList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
     const [newIncomeAmount, setNewIncomeAmount] = useState("")
-    const [incomeMonth, setIncomeMonth] = useState(monthsList[0])
-    const [incomeYear, setIncomeYear] = useState(2023)
+    const [incomeMonth, setIncomeMonth] = useState([])
+    const [incomeYear, setIncomeYear] = useState("")
     const [errors, setErrors] = useState([])
+
+    useEffect(() => {
+        const d = new Date();
+        let name = monthsList[d.getMonth()]
+        let date =  new Date().getFullYear()
+        setIncomeMonth(name)
+        setIncomeYear(date)
+    }, [])
 
     let allErrors = []
     if (errors) {
@@ -20,6 +28,12 @@ function IncomeForm() {
         })
     }
 
+    function succesfullForm() {
+        setErrors(["Form filled out succesfully!"])
+        setTimeout(function () {
+            setErrors([]);
+        }, 5000);
+    }
 
     function fetchForNewIncome(e) {
         e.preventDefault()
@@ -27,7 +41,7 @@ function IncomeForm() {
             amount: newIncomeAmount,
             user_id: user.id,
             month: incomeMonth,
-            year: incomeMonth
+            year: incomeYear
         }
         fetch("/incomes", {
             method: "POST",
@@ -40,7 +54,7 @@ function IncomeForm() {
             if (r.ok) {
                 r.json().then((data) => {
                     fetchMe()
-                    setErrors([])
+                    succesfullForm()
                 })
             }
             else {
@@ -59,7 +73,14 @@ function IncomeForm() {
                     <br></br>
                 <label>Month:</label>
                 <select onChange={(e) => setIncomeMonth(e.target.value)}>
-                    {monthsList.map((month, index) => <option key={index} value={month}>{month}</option>)}
+                    {monthsList.map((month, index) => {
+                        if (month == incomeMonth) {
+                            return <option selected key={index} value={month} >{month}</option>
+                        }
+                        else {
+                            return <option key={index} value={month}>{month}</option>
+                        }
+                    })}
                 </select>
                     <br></br>
                 <label>Year:</label>

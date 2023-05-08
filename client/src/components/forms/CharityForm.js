@@ -1,19 +1,52 @@
 import React, {useContext, useState, useEffect} from 'react';
+import { CharityContext } from '../../context/charities';
+import { UserContext } from '../../context/user';
 import './form.css'
 
 
 function CharityForm() {
 
-
     const [newCharityName, setNewCharityName] = useState("")
     const [newCharityLink, setNewCharityLink] = useState("")
     const [errors, setErrors] = useState([])
+
+    const {onNewCharity} = useContext(CharityContext)
+    const {user, addFavCharity} = useContext(UserContext)
 
     let allErrors = []
     if (errors) {
         allErrors = errors.map((err, index) => {
             return (<h5 key={index}>{err}</h5>)
         })
+    }
+
+    function succesfullForm() {
+        setErrors(["Form filled out succesfully!"])
+        setTimeout(function () {
+            setErrors([]);
+        }, 5000);
+    }
+
+    function includeFavCharity(data) {
+            const newFavCharity = {
+                charity_id: data.id,
+                user_id: user.id
+            }
+            fetch("/fav_charities", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json", 
+                },
+                body: JSON.stringify(newFavCharity),
+            })
+            .then((r) => {
+                if (r.ok) {
+                    r.json().then((data) => addFavCharity(data))
+                }
+                else {
+                    r.json().then((err) => setErrors(err.errors))
+                }
+            })
     }
 
 
@@ -33,8 +66,9 @@ function CharityForm() {
         .then((r) => {
             if (r.ok) {
                 r.json().then((data) => {
-                    console.log(data)
-                    setErrors([])
+                    includeFavCharity(data)
+                    onNewCharity(data)
+                    succesfullForm()
                 })
             }
             else {
