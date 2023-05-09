@@ -10,20 +10,28 @@
 }
 
 .account-box h6 {
-    display:inline-block;
+    display: inline-block;
     font-size: 12px;
+    margin-left: 5px;
 }
 
 .account-box h5 {
-    height: 20px;
-    margin-top: 1px;
     font-size: 15px;
+}
+
+.account-h5 {
+    height: 20px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
 }
 
 .emoji-button {
     background-color: white;
     border: 1px solid black;
     margin-left: 5px;
+    margin-top: -2px;
 }
 
 .log-out-button {
@@ -35,13 +43,24 @@
     width: 61.45px;
 }
 
-.editing form{
-    height: 17px;
-    margin-top: -20px;
+.editing {
+    display: flex;
+    flex-direction: row;
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+.editing form {
+    margin-top: 27px;
 }
 
 .editing h5 {
     margin-top: 28px;
+    margin-right: 5px;
+}
+
+.editing input[type=text] {
+    width: 20px;
 }
 
 .change-page-button{

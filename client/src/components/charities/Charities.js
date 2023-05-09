@@ -9,13 +9,25 @@ import './charity.css'
 function Charities() {
 
     const {userFavCharities} = useContext(UserContext)
-    const {charitiesList, charityErrors, setCharityErrors} = useContext(CharityContext)
+    const {setCharitiesList, charitiesList, charityErrors, setCharityErrors} = useContext(CharityContext)
 
-    const [filterCharitiesList, setFilterCharitiesList] = useState(charitiesList)
+    const [filterCharitiesList, setFilterCharitiesList] = useState([])
 
     let history = useHistory();
 
-
+    useEffect(()=> {
+        fetch("/charities")
+        .then((r) => {
+            if (r.ok) {
+                r.json().then((data) => {
+                    setFilterCharitiesList(data)
+                    setCharitiesList(data)})
+            }
+            else {
+                r.json().then((err) => setCharityErrors(err.errors))
+            }
+        })
+    }, [])
 
     function removedCharity(error) {
         setCharityErrors(error)
@@ -35,14 +47,6 @@ function Charities() {
     }
 
     let filteredList
-
-    useEffect(() => {
-        setTimeout(function () {
-            setFilterCharitiesList(charitiesList);
-        }, 5);
-    }, [])
-
-
 
     function searchCharities(searchedTerm) {
         if (searchedTerm) {

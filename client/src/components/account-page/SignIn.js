@@ -44,7 +44,7 @@ function SignIn() {
             if (r.ok) {
                 r.json().then((data) => {
                     history.push('/forms')
-                    setUser(data)
+                    setAllData(data)
                     setErrors([])
                 })
             }

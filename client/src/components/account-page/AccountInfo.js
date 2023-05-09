@@ -49,7 +49,7 @@ function AccountInfo() {
     }
 
     const editingHtml = <div className='editing'>
-            <h5>Maaser Percentage:</h5><form onSubmit={handleSubmit}> 
+            <h5>Maaser Percentage: </h5><form onSubmit={handleSubmit}> 
                 <input type="text" name="percentage" value={editedPercentage} onChange={(e) => setEditedPercentage(e.target.value)}/>
                 <input type="submit" value="Save"/>
             </form>
@@ -57,13 +57,13 @@ function AccountInfo() {
 
     return (
         <div className='account-box'>
-            <h5>Name: <h6>{user.name}</h6></h5>
+            <div className='account-h5'><h5>Name: </h5><h6>{user.name}</h6></div>
             <div>   
-                {editingStatus ? <h5>Maaser Percentage: <h6>{editedPercentage}%
+                {editingStatus ? <div className='account-h5'><h5>Maaser Percentage: </h5><h6>{editedPercentage}%
                     <button onClick={handleEdit} className='emoji-button'>
                         <span>✏️</span>
                     </button>
-                </h6></h5>  : editingHtml }       
+                </h6></div>  : editingHtml }       
                 
             </div>
  
