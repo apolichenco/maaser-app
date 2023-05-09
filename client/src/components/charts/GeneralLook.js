@@ -18,7 +18,7 @@ function GeneralLook() {
         },
         {
             label: "You Charity Equals To",
-            data: user.month_total_donations.map((data) => data * 10)
+            data: user.month_total_donations.map((data) => data / `0.${user.percentage}`)
         }]
     })
 
