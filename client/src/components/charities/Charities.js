@@ -11,7 +11,11 @@ function Charities() {
     const {userFavCharities} = useContext(UserContext)
     const {charitiesList, charityErrors, setCharityErrors} = useContext(CharityContext)
 
+    const [filterCharitiesList, setFilterCharitiesList] = useState(charitiesList)
+
     let history = useHistory();
+
+
 
     function removedCharity(error) {
         setCharityErrors(error)
@@ -30,13 +34,43 @@ function Charities() {
         allFavCharities = userFavCharities.map((charity) => <SingleCharity key={charity.charity.id} charityData={charity.charity} setErrors={removedCharity}/>)
     }
 
+    let filteredList
+
+    useEffect(() => {
+        setTimeout(function () {
+            setFilterCharitiesList(charitiesList);
+        }, 5);
+    }, [])
+
+
+
+    function searchCharities(searchedTerm) {
+        if (searchedTerm) {
+            filteredList = charitiesList.filter((charity) => {
+                let charityName = charity.name
+                return charityName.toLowerCase().includes(searchedTerm.toLowerCase())
+            })
+            setFilterCharitiesList(filteredList)
+        }
+        else {
+            setFilterCharitiesList(charitiesList)
+        }
+    }
+
+
     return (
         <div>
 
             <Switch>            
                 <Route path="/all-charities">
+                    <div className='search-bar'>
+                        <label htmlFor='search'>Search Charities</label>
+                        <input type='text' id='search' 
+                        placeholder='Start searching through the charities'
+                        onChange={(e) => searchCharities(e.target.value)}/>
+                    </div>
                     <div className='container' >
-                        {charitiesList.map((charity) => <SingleCharity key={charity.id} charityData={charity} setErrors={removedCharity}/>)}
+                        {filterCharitiesList.map((charity) => <SingleCharity key={charity.id} charityData={charity} setErrors={removedCharity}/>)}
                     </div>
                     {charityErrors.length > 0 ?  <div className='error-message'><h5>{charityErrors}</h5></div> : null }  
                 </Route>
@@ -53,7 +87,6 @@ function Charities() {
                     {charityErrors.length > 0 ?  <div className='error-message'><h5>{charityErrors}</h5></div> : null }  
                 </Route>
             </Switch>
-            {/* {charityErrors.length > 0 ?  <div className='error-message'><h5>{charityErrors}</h5></div> : null }   */}
         </div>
     );
 

@@ -91,3 +91,43 @@
       margin-left: -10px;
     }
   }
+
+  .search-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin: -15px 5px 0px -6px;
+    gap: 10px 20px; 
+    padding-bottom: 10px;
+    border-radius: 0px 0px 10px 10px; 
+    background-image: linear-gradient(rgb(175, 100, 235), rgb(227, 204, 245));
+  }
+
+  @media screen and (min-width: 850px) {
+    .search-bar {
+      margin-left: -10px;
+    }
+  }
+
+  .search-bar label {
+    width: 175px;
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    background-color: rgb(215, 215, 255);
+    border-radius: 5px;
+    border-bottom: 2px solid black;
+    color: black;
+    margin-left: 5px;
+  }
+
+  .search-bar input {
+    width: 65%;
+    background-color: white;
+    border: 5px solid white;
+    border-bottom: 2px solid black;
+    border-radius: 5px;
+  }
+
+
+  
