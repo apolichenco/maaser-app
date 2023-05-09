@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
     validates :name, presence: true, uniqueness: true
     validates :password_digest, presence: true, uniqueness: true
-    validates :percentage, presence: true, numericality: {in: 1..100}
+    validates :percentage, presence: true, numericality: {in: 1..99}
 
     def percentecise_it
         self.percentage * 0.01

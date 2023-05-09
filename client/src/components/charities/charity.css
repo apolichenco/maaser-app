@@ -12,8 +12,11 @@
     color: blue;
     width: 225px;
     height: 167px;
-    border: 5px solid #555;
+    border: 10px solid ;
+    border-image: linear-gradient(135deg, rgb(182, 3, 182), rgb(244, 200, 250), rgb(182, 3, 182));
+    border-image-slice: 1;
     border-radius: 10px;
+    background-color: rgb(238, 241, 221, 0.75);
   }
 
   .charity-name {
@@ -36,7 +39,6 @@
     margin: auto;
     font-size: 20px;
     background-color: rgb(200, 225, 250);
-    /* border: 1px solid #555; */
     border-radius: 25px;
     }
 

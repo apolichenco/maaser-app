@@ -38,6 +38,7 @@ function Charities() {
                     <div className='container' >
                         {charitiesList.map((charity) => <SingleCharity key={charity.id} charityData={charity} setErrors={removedCharity}/>)}
                     </div>
+                    {charityErrors.length > 0 ?  <div className='error-message'><h5>{charityErrors}</h5></div> : null }  
                 </Route>
                 <Route path="/my-saved-charities">
                     <div className='charity-header'>
@@ -49,9 +50,10 @@ function Charities() {
                     <div className='container'>
                         {allFavCharities}
                     </div>
+                    {charityErrors.length > 0 ?  <div className='error-message'><h5>{charityErrors}</h5></div> : null }  
                 </Route>
             </Switch>
-            {charityErrors.length > 0 ?  <div className='error-message'><h5>{charityErrors}</h5></div> : null }  
+            {/* {charityErrors.length > 0 ?  <div className='error-message'><h5>{charityErrors}</h5></div> : null }   */}
         </div>
     );
 

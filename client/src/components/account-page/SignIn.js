@@ -8,7 +8,7 @@ function SignIn() {
     const [password, setPassword] = useState("")
     const [percentage, setPercentage] = useState(10)
     const [errors, setErrors] = useState([])
-    const [typeOfLogIn, setTypeOfLogIn] = useState(false)
+    const [typeOfLogIn, setTypeOfLogIn] = useState(true)
 
     const {setAllData, setUser} = useContext(UserContext)
 
