@@ -33,3 +33,6 @@ Personally, I like to give a certain percentage of whatever I make to charity. U
 * option to make a charity private
 * Be able to change the charts based on year, with a dropdown with different years
 * An about page for the importance of charity
+
+### Pictures
+![Screenshot 2023-05-25 131752](https://github.com/apolichenco/maaser-app/assets/98846858/1accbca1-161e-4501-b520-e9731f6cbefd)
