@@ -15,7 +15,7 @@ charity = Charity.create([{ name: "Chabad Carmel Valley", link: "https://www.cha
 # donation = Donation.create([{ amount: 180, user_id: 1, fav_charity_id: 1}])
 # subscription = Subscription.create([{ amount: 180, day_of_month: 25, user_id: 1, charity_id: 1}])
 second_charity = Charity.create([{ name: "Chabad Coral Springs", link: "https://www.coralspringschabad.org/templates/articlecco_cdo/aid/488285/jewish/DONATE.htm"}])
-third_charity = Charity.create([{ name: "Collel Chabad", link: "https://1.colelchabad.org/Donate_Now.htm?aCampaign=ZDML&%query_string"}])
+third_charity = Charity.create([{ name: "Collel Chabad", link: "https://colelchabad.org/donate-2/"}])
 fourth_charity = Charity.create([{ name: "Friendship Circle Montreal", link: "https://www.friendshipcircle.ca/donate"}])
 fifth_charity = Charity.create([{ name: "Chai Lifeline", link: "https://www.chailifeline.org/donate.php"}])
 

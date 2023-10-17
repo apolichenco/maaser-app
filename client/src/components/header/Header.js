@@ -50,6 +50,9 @@ function Header() {
                 <NavLink to="../forms">
                     <h4 className='header-button'>New Activity</h4> 
                 </NavLink>
+                <NavLink to="../about">
+                <h4 className='header-button'>About</h4> 
+                </NavLink>
 
                 <h4 className='header-button' onClick={accountDropdownChange}>Account</h4>
                 {accountDropdown ? <Account/> : null}

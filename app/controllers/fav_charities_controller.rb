@@ -24,8 +24,12 @@ class FavCharitiesController < ApplicationController
     end
 
     def create
-        fav_charity = FavCharity.create!(params.permit(:user_id, :charity_id))
+        if params[:user_id] == current_user_id
+            fav_charity = FavCharity.create!(params.permit(:user_id, :charity_id))
         render json: fav_charity, status: :created
+        else
+            render json: {errors: ["Not your subscription"]}, status: :unauthorized
+        end
     end
 
 
