@@ -10,7 +10,7 @@ function About() {
         <div>
             <h1>What, Why, and How of Maaser:?</h1>
         <p></p>
-        <h6>Copied from <a>Chabad.org</a></h6>
+        <h6>Copied from <a href="https://chabad.org" target='_blank'>Chabad.org</a></h6>
         </div>
     );
 

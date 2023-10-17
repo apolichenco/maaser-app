@@ -6,7 +6,7 @@ import Form from './forms/Form';
 import SignIn from './account-page/SignIn';
 import HomePage from './charts/HomePage';
 import Charities from './charities/Charities'
-import About from '../about/About';
+import About from './about/About';
 import { UserContext } from '../context/user';
 
 
@@ -29,7 +29,6 @@ function App() {
                             <About/>
                         </Route>
                     </Switch>
-                    
                     </div> : <SignIn/>
                 }
             </div>
