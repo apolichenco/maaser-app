@@ -1,11 +1,10 @@
 class FavCharity < ApplicationRecord
 
     belongs_to :user
-    belongs_to :charity
     has_many :donations
 
     validates :user_id, presence: true
-    validates :charity_id, presence: true, uniqueness: {scope: :user_id}
+    validates :name, presence: true, uniqueness: true
 
     def total_gave_to_this_charity
         total_given = 0

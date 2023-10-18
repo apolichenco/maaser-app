@@ -4,7 +4,6 @@ class UserSerializer < ActiveModel::Serializer
   has_many :donations
   has_many :fav_charities
   has_many :incomes
-  has_many :subscriptions
 
  
 

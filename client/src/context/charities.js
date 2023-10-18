@@ -5,11 +5,14 @@ const CharityContext = createContext(null);
 const CharityProvider = ({children}) => {
 
     const [charitiesList, setCharitiesList] = useState([])
+    // const [favCharitiesList, setFavCharitiesList] = useState([])
     const [charityErrors, setCharityErrors] = useState([])
 
     function onNewCharity(newCharity) {
         setCharitiesList([...charitiesList, newCharity])
     }
+
+
 
     return (
         <CharityContext.Provider value={ { 

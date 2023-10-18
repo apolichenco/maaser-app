@@ -67,6 +67,7 @@ function SignIn() {
             if (r.ok) {     
                 r.json()
                 .then((data) => {
+                    console.log(data)
                     history.push('/')
                     setAllData(data)
                     setErrors([])

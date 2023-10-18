@@ -23,8 +23,9 @@ function SingleCharity({charityData, setErrors}) {
 
     function favoriteACharity() {
             const newFavCharity = {
-                charity_id: charityData.id,
-                user_id: user.id
+                user_id: user.id,
+                name: charityData.name,
+                link: charityData.link
             }
             fetch("/fav_charities", {
                 method: "POST",

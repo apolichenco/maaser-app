@@ -1,8 +1,6 @@
 class Charity < ApplicationRecord
 
     # has_many :subscriptions
-    has_many :fav_charities
-    has_many :users, through: :fav_charities
 
     validates :name, presence: true, uniqueness: true
 
