@@ -27,47 +27,49 @@ function CharityForm() {
         }, 5000);
     }
 
-    function includeFavCharity(data) {
-            const newFavCharity = {
-                charity_id: data.id,
-                user_id: user.id
-            }
-            fetch("/fav_charities", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json", 
-                },
-                body: JSON.stringify(newFavCharity),
-            })
-            .then((r) => {
-                if (r.ok) {
-                    r.json().then((data) => addFavCharity(data))
-                }
-                else {
-                    r.json().then((err) => setErrors(err.errors))
-                }
-            })
-    }
+    // function addToCharityList(data) {
+    //         const newCharity = {
+    //             name: data.name,
+    //             link: data.link,
+
+    //         }
+    //         fetch("/charities", {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json", 
+    //             },
+    //             body: JSON.stringify(newCharity),
+    //         })
+    //         .then((r) => {
+    //             if (r.ok) {
+    //                 r.json().then((data) => onNewCharity(data))
+    //             }
+    //             else {
+    //                 r.json().then((err) => setErrors(err.errors))
+    //             }
+    //         })
+    // }
 
 
     function fetchForNewCharity(e) {
         e.preventDefault()
-        const newCharity = {
+        const newFavCharity = {
             name: newCharityName,
-            link: newCharityLink
+            link: newCharityLink, 
+            user_id: user.id
         }
-        fetch("/charities", {
+        fetch("/fav_charities", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json", 
             },
-            body: JSON.stringify(newCharity),
+            body: JSON.stringify(newFavCharity),
         })
         .then((r) => {
             if (r.ok) {
                 r.json().then((data) => {
-                    includeFavCharity(data)
-                    onNewCharity(data)
+                    // addToCharityList(data)
+                    addFavCharity(data)
                     succesfullForm()
                 })
             }
