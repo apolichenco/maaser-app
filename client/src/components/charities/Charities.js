@@ -46,10 +46,6 @@ function Charities() {
         allFavCharities = userFavCharities.map((charity) => <SingleCharity key={charity.id} charityData={charity} setErrors={removedCharity}/>)
     }
 
-    console.log(userFavCharities)
-    console.log(userFavCharities.map((charity) => console.log(charity)))
-
-
     let filteredList
 
     function searchCharities(searchedTerm) {
@@ -64,11 +60,6 @@ function Charities() {
             setFilterCharitiesList(charitiesList)
         }
     }
-
-    function AddYourOwnCharity() {
-        history.push('../forms/all-charities')
-    }
-
 
     return (
         <div>
@@ -94,7 +85,7 @@ function Charities() {
                     <button className='charity-header-buttons' onClick={goToNewCharity}>Add your own charity</button>
                     </div>
                     <div className='container'>
-                        {userFavCharities.length > 0 ? allFavCharities : {AddYourOwnCharity}}
+                        {userFavCharities.length > 0 ? allFavCharities : <h1>You have no charities on your list. Choose from the options above to create a new one or choose one fromk our list.</h1>}
                     </div>
                     {charityErrors.length > 0 ?  <div className='error-message'><h5>{charityErrors}</h5></div> : null }  
                 </Route>

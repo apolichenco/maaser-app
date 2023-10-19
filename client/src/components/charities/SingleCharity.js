@@ -10,15 +10,15 @@ function SingleCharity({charityData, setErrors}) {
     const [favCharityId, setFavCharityId] = useState([])
 
 
-    // useEffect(() => {
-    //     setFavCharityId(userFavCharities.filter((favCharity) => favCharity.charity.id === charityData.id))
-    //     if (favCharityId.length == 1) {
-    //         setLikedOrNot(false)
-    //     }
-    //     else {
-    //         setLikedOrNot(true)
-    //     }
-    // }, [likedOrNot])
+    useEffect(() => {
+        setFavCharityId(userFavCharities.filter((favCharity) => favCharity.name === charityData.name))
+        if (favCharityId.length == 1) {
+            setLikedOrNot(false)
+        }
+        else {
+            setLikedOrNot(true)
+        }
+    }, [likedOrNot])
 
 
     function favoriteACharity() {
