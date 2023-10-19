@@ -46,8 +46,8 @@ function Charities() {
         allFavCharities = userFavCharities.map((charity) => <SingleCharity key={charity.id} charityData={charity} setErrors={removedCharity}/>)
     }
 
-    console.log(allFavCharities)
-    console.log(userFavCharities.length)
+    console.log(userFavCharities)
+    console.log(userFavCharities.map((charity) => console.log(charity)))
 
 
     let filteredList
@@ -94,7 +94,7 @@ function Charities() {
                     <button className='charity-header-buttons' onClick={goToNewCharity}>Add your own charity</button>
                     </div>
                     <div className='container'>
-                        {userFavCharities.length > 0 ? {allFavCharities} : {AddYourOwnCharity}}
+                        {userFavCharities.length > 0 ? allFavCharities : {AddYourOwnCharity}}
                     </div>
                     {charityErrors.length > 0 ?  <div className='error-message'><h5>{charityErrors}</h5></div> : null }  
                 </Route>
