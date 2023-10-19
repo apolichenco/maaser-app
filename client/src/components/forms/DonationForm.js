@@ -85,7 +85,7 @@ function DonationForm() {
                     <br></br>
                 <label>Donated to:</label>
                 <select onChange={(e) => setDonationFavCharityId(e.target.value)}>
-                    {userFavCharities.map((charity) => <option key={charity.id} value={charity.id}>{charity.charity.name}</option>)}
+                    {userFavCharities.map((charity) => <option key={charity.id} value={charity.id}>{charity.name}</option>)}
                 </select>
                     <br></br>
                 <label>Month:</label>

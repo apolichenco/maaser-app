@@ -21,7 +21,7 @@ function CharityData() {
             }
         },
         labels: userFavCharities.map((data) => 
-            data.charity.name
+            data.name
         ),
         datasets: [{
             label: "You Gave",
